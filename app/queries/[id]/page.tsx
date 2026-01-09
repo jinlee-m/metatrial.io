@@ -1,4 +1,4 @@
-import { queries } from "../../components/mockData";
+import { queries } from "../../../components/mockData";
 
 export function generateStaticParams() {
   return queries.map((query) => ({ id: query.id }));

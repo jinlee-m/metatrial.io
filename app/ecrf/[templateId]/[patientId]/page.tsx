@@ -1,4 +1,4 @@
-import { patients, templates } from "../../../components/mockData";
+import { patients, templates } from "../../../../components/mockData";
 
 export function generateStaticParams() {
   return templates.flatMap((template) =>

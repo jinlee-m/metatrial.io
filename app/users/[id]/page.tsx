@@ -1,4 +1,4 @@
-import { users } from "../../components/mockData";
+import { users } from "../../../components/mockData";
 
 export function generateStaticParams() {
   return users.map((user) => ({ id: user.id }));

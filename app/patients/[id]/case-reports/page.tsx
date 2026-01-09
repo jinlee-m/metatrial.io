@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { patients } from "../../../components/mockData";
+import { patients } from "../../../../components/mockData";
 
 export function generateStaticParams() {
   return patients.map((patient) => ({ id: patient.id }));

@@ -1,4 +1,4 @@
-import { templates } from "../../../components/mockData";
+import { templates } from "../../../../components/mockData";
 
 export function generateStaticParams() {
   return templates.map((template) => ({ id: template.id }));

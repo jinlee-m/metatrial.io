@@ -1,4 +1,4 @@
-import { saes } from "../../components/mockData";
+import { saes } from "../../../components/mockData";
 
 export function generateStaticParams() {
   return saes.map((sae) => ({ id: sae.id }));
