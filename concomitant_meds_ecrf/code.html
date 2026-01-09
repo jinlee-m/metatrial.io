@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Concomitant Medications eCRF</title>
+<!-- Google Fonts -->
+
+
+<link href="../assets/inter.css" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="../assets/tailwindcdn.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#192633",
+                        "border-dark": "#324d67",
+                        "text-secondary": "#92adc9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit to match dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101922; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #324d67; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #92adc9; 
+        }
+        
+        /* Fix for date input icon color in dark mode (limited support, primarily for webkit) */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            opacity: 0.6;
+            cursor: pointer;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased selection:bg-primary selection:text-white">
+<a data-codex-home-link target="_top" href="../index.html" style="position:fixed;top:18px;left:18px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:9999px;background:linear-gradient(135deg,#1d4ed8,#0ea5e9);color:#fff;font:700 12px/1.1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans',Arial,sans-serif;text-decoration:none;border:1px solid rgba(255,255,255,0.35);box-shadow:0 10px 25px rgba(2,132,199,0.35),0 2px 6px rgba(0,0,0,0.2);letter-spacing:0.02em;">◀ 목록으로</a>
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-border-dark/50 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90">
+<div class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">동반 약물 eCRF</h2>
+<div class="flex w-12 items-center justify-end absolute right-4">
+<span class="material-symbols-outlined text-text-secondary cursor-pointer hover:text-primary transition-colors">help</span>
+</div>
+</header>
+<!-- Meta Information -->
+<div class="bg-background-light dark:bg-background-dark pt-2">
+<p class="text-text-secondary text-xs font-medium leading-normal py-2 px-4 text-center bg-surface-dark/30 rounded-lg mx-4 border border-border-dark/30">
+                Subject ID: <span class="text-primary font-bold">001-204</span> | Site: <span class="text-white">Severance Hospital</span>
+</p>
+</div>
+<main class="flex-1 pb-24">
+<!-- Existing Medications Section -->
+<div class="px-4 py-4">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-slate-900 dark:text-white text-base font-bold leading-tight">등록된 약물 (1)</h3>
+</div>
+<!-- Card -->
+<div class="group relative flex flex-col gap-3 rounded-xl bg-white dark:bg-surface-dark p-4 border border-gray-200 dark:border-border-dark shadow-sm hover:border-primary/50 transition-colors cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">medication</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-slate-900 dark:text-white">Aspirin</h4>
+<p class="text-sm text-text-secondary">100 mg, 1일 1회 (QD)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary hover:text-white">edit</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-500 ring-1 ring-inset ring-green-500/20">
+                            계속 복용 중
+                        </span>
+<p class="text-xs text-text-secondary">시작일: 2023-01-15</p>
+</div>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px bg-gray-200 dark:bg-border-dark mx-4 my-2"></div>
+<!-- New Entry Form Section -->
+<div class="flex flex-col">
+<h3 class="text-primary text-lg font-bold leading-tight px-4 pt-4 pb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+                    새로운 약물 정보 입력
+                </h3>
+<form class="flex flex-col gap-4 px-4 py-3" onsubmit="event.preventDefault();">
+<!-- Drug Name -->
+<label class="flex flex-col gap-1.5">
+<div class="flex justify-between">
+<span class="text-slate-700 dark:text-white text-sm font-medium">약물명 (CMTRT)</span>
+<span class="text-red-500 text-xs">*필수</span>
+</div>
+<div class="relative">
+<input class="w-full rounded-lg border border-gray-300 dark:border-border-dark bg-white dark:bg-surface-dark px-4 py-3 text-base text-slate-900 dark:text-white placeholder:text-text-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" placeholder="예: Tylenol" type="text"/>
+<div class="absolute right-3 top-3 text-text-secondary pointer-events-none">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+</div>
+</label>
+<!-- Dose & Unit Row -->
+<div class="flex gap-3">
+<label class="flex flex-col gap-1.5 flex-1 min-w-[120px]">
+<span class="text-slate-700 dark:text-white text-sm font-medium">용량 (CMDOSE)</span>
+<input class="w-full rounded-lg border border-gray-300 dark:border-border-dark bg-white dark:bg-surface-dark px-4 py-3 text-base text-slate-900 dark:text-white placeholder:text-text-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" placeholder="0" type="number"/>
+</label>
+<label class="flex flex-col gap-1.5 w-1/3 min-w-[100px]">
+<span class="text-slate-700 dark:text-white text-sm font-medium">단위 (CMDOSU)</span>
+<div class="relative">
+<select class="w-full appearance-none rounded-lg border border-gray-300 dark:border-border-dark bg-white dark:bg-surface-dark px-4 py-3 text-base text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none pr-8">
+<option disabled="" selected="" value="">선택</option>
+<option value="mg">mg</option>
+<option value="ml">ml</option>
+<option value="tablet">tablet</option>
+<option value="capsule">capsule</option>
+<option value="g">g</option>
+</select>
+<div class="absolute right-2 top-3.5 text-text-secondary pointer-events-none">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</label>
+</div>
+<!-- Frequency -->
+<label class="flex flex-col gap-1.5">
+<span class="text-slate-700 dark:text-white text-sm font-medium">투여 빈도 (CMFREQ)</span>
+<div class="relative">
+<select class="w-full appearance-none rounded-lg border border-gray-300 dark:border-border-dark bg-white dark:bg-surface-dark px-4 py-3 text-base text-slate-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none pr-8">
+<option disabled="" selected="" value="">빈도를 선택하세요</option>
+<option value="QD">1일 1회 (QD)</option>
+<option value="BID">1일 2회 (BID)</option>
+<option value="TID">1일 3회 (TID)</option>
+<option value="QID">1일 4회 (QID)</option>
+<option value="PRN">필요시 (PRN)</option>
+</select>
+<div class="absolute right-3 top-3.5 text-text-secondary pointer-events-none">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</label>
+<!-- Dates Row -->
+<div class="flex gap-3">
+<label class="flex flex-col gap-1.5 flex-1">
+<span class="text-slate-700 dark:text-white text-sm font-medium">시작일 (STDTC)</span>
+<div class="relative">
+<input class="w-full rounded-lg border border-gray-300 dark:border-border-dark bg-white dark:bg-surface-dark px-4 py-3 text-base text-slate-900 dark:text-white placeholder:text-text-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" type="date"/>
+</div>
+</label>
+<label class="flex flex-col gap-1.5 flex-1">
+<span class="text-slate-700 dark:text-white text-sm font-medium">종료일 (ENDTC)</span>
+<div class="relative">
+<input class="w-full rounded-lg border border-gray-300 dark:border-border-dark bg-white dark:bg-surface-dark px-4 py-3 text-base text-slate-900 dark:text-white placeholder:text-text-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" type="date"/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<input class="h-4 w-4 rounded border-gray-300 dark:border-border-dark bg-white dark:bg-surface-dark text-primary focus:ring-offset-background-dark focus:ring-primary" id="ongoing" type="checkbox"/>
+<label class="text-sm text-slate-700 dark:text-text-secondary select-none" for="ongoing">현재 계속 복용 중 (Ongoing)</label>
+</div>
+<!-- Indication -->
+<label class="flex flex-col gap-1.5">
+<span class="text-slate-700 dark:text-white text-sm font-medium">복용 목적 (CMINDC)</span>
+<textarea class="w-full resize-none rounded-lg border border-gray-300 dark:border-border-dark bg-white dark:bg-surface-dark px-4 py-3 text-base text-slate-900 dark:text-white placeholder:text-text-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none min-h-[100px]" placeholder="예: 고혈압 관리, 두통 등"></textarea>
+</label>
+<!-- Add Button -->
+<button class="mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-border-dark bg-surface-dark/50 py-3 text-base font-medium text-primary hover:bg-surface-dark hover:border-primary transition-all">
+<span class="material-symbols-outlined">add</span>
+                        약물 추가 (Add Another)
+                    </button>
+<div class="h-6"></div>
+</form>
+</div>
+</main>
+<!-- Sticky Footer Actions -->
+<footer class="fixed bottom-0 z-50 w-full max-w-md bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-border-dark p-4 backdrop-blur-lg bg-opacity-95 dark:bg-opacity-95">
+<div class="flex gap-3">
+<button class="flex-1 rounded-lg border border-gray-300 dark:border-border-dark bg-transparent py-3.5 text-base font-bold text-slate-700 dark:text-text-secondary hover:bg-gray-100 dark:hover:bg-surface-dark transition-colors">
+                    취소
+                </button>
+<button class="flex-[2] rounded-lg bg-primary py-3.5 text-base font-bold text-white shadow-lg shadow-primary/20 hover:bg-blue-600 transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">save</span>
+                    저장 (Save)
+                </button>
+</div>
+<!-- Bottom safe area spacing for mobile -->
+<div class="h-1"></div>
+</footer>
+</div>
+</body></html>

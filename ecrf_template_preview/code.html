@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eCRF 템플릿 미리보기</title>
+<link href="../assets/inter.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<script src="../assets/tailwindcdn.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#192633",
+                        "border-dark": "#324d67",
+                        "text-secondary": "#92adc9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white antialiased overflow-x-hidden">
+<a data-codex-home-link target="_top" href="../index.html" style="position:fixed;top:18px;left:18px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:9999px;background:linear-gradient(135deg,#1d4ed8,#0ea5e9);color:#fff;font:700 12px/1.1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans',Arial,sans-serif;text-decoration:none;border:1px solid rgba(255,255,255,0.35);box-shadow:0 10px 25px rgba(2,132,199,0.35),0 2px 6px rgba(0,0,0,0.2);letter-spacing:0.02em;">◀ 목록으로</a>
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto bg-background-dark shadow-2xl overflow-hidden border-x border-gray-800/50">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-20 flex items-center bg-background-dark/95 backdrop-blur-md p-4 pb-3 justify-between border-b border-border-dark">
+<div class="text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-white/5 cursor-pointer transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">템플릿 미리보기</h2>
+<div class="flex items-center justify-end">
+<button class="text-primary text-sm font-bold leading-normal tracking-[0.015em] shrink-0 hover:text-blue-400 transition-colors">
+                    edit 복귀
+                </button>
+</div>
+</header>
+<!-- Content Scroll Area -->
+<main class="flex-1 overflow-y-auto pb-24 scrollbar-hide">
+<!-- Context Banner -->
+<div class="px-4 py-3 bg-blue-500/10 border-b border-blue-500/20 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5" style="font-size: 20px;">info</span>
+<p class="text-blue-200 text-sm leading-relaxed">
+                    현재 화면은 <strong>읽기 전용</strong> 미리보기입니다. 데이터 입력은 비활성화되어 있습니다.
+                </p>
+</div>
+<!-- Section 1: Demographics -->
+<div class="flex flex-col border-b border-border-dark bg-background-dark">
+<div class="flex items-center gap-2 px-4 pt-6 pb-2">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">person</span>
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">인구통계 (Demographics)</h3>
+</div>
+<!-- Field: Initials -->
+<div class="flex flex-col gap-1 px-4 py-3">
+<label class="text-white text-sm font-medium leading-normal pb-1.5 flex items-center justify-between">
+<span>이니셜 (Subject Initials)</span>
+<span class="text-xs text-red-400 font-normal">* 필수</span>
+</label>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary px-4 text-base font-normal leading-normal cursor-not-allowed opacity-90" placeholder="예: H.G.D" readonly=""/>
+</div>
+<!-- Field: DOB -->
+<div class="flex flex-col gap-1 px-4 py-3">
+<label class="text-white text-sm font-medium leading-normal pb-1.5">생년월일 (Date of Birth)</label>
+<div class="flex w-full flex-1 items-stretch rounded-lg group">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-white focus:outline-0 focus:ring-0 border border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary px-4 border-r-0 pr-2 text-base font-normal leading-normal cursor-not-allowed opacity-90" placeholder="YYYY-MM-DD" readonly=""/>
+<div class="text-text-secondary flex border border-border-dark bg-surface-dark items-center justify-center px-4 rounded-r-lg border-l-0">
+<span class="material-symbols-outlined" style="font-size: 20px;">calendar_today</span>
+</div>
+</div>
+</div>
+<!-- Field: Sex (Radio) -->
+<div class="flex flex-col gap-2 px-4 py-4">
+<label class="text-white text-sm font-medium leading-normal">성별 (Sex)</label>
+<div class="flex gap-4">
+<label class="flex items-center gap-3 p-3 rounded-lg border border-border-dark bg-surface-dark flex-1 cursor-not-allowed opacity-90">
+<div class="relative flex items-center justify-center size-5 rounded-full border border-primary bg-primary/20">
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+<span class="text-white text-sm">남성 (Male)</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-border-dark bg-surface-dark flex-1 cursor-not-allowed opacity-90">
+<div class="relative flex items-center justify-center size-5 rounded-full border border-text-secondary bg-transparent">
+</div>
+<span class="text-text-secondary text-sm">여성 (Female)</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-4 bg-[#0d141c]"></div>
+<!-- Section 2: Vital Signs -->
+<div class="flex flex-col border-b border-border-dark bg-background-dark border-t border-t-border-dark">
+<div class="flex items-center gap-2 px-4 pt-6 pb-2">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">monitor_heart</span>
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">활력 징후 (Vital Signs)</h3>
+</div>
+<!-- Field: Height -->
+<div class="flex flex-col gap-1 px-4 py-3">
+<label class="text-white text-sm font-medium leading-normal pb-1.5">신장 (Height)</label>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-white focus:outline-0 focus:ring-0 border border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary px-4 border-r-0 text-base font-normal leading-normal text-right cursor-not-allowed opacity-90" placeholder="0" readonly=""/>
+<div class="text-text-secondary flex border border-border-dark bg-surface-dark items-center justify-center px-4 rounded-r-lg border-l-0 min-w-[60px]">
+<span class="text-sm font-medium">cm</span>
+</div>
+</div>
+<p class="text-text-secondary text-xs font-normal leading-normal pt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">info</span> 
+                        범위: 30 - 250 cm
+                    </p>
+</div>
+<!-- Field: Weight -->
+<div class="flex flex-col gap-1 px-4 py-3">
+<label class="text-white text-sm font-medium leading-normal pb-1.5">체중 (Weight)</label>
+<div class="flex w-full flex-1 items-stretch rounded-lg">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-white focus:outline-0 focus:ring-0 border border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary px-4 border-r-0 text-base font-normal leading-normal text-right cursor-not-allowed opacity-90" placeholder="0.0" readonly=""/>
+<div class="text-text-secondary flex border border-border-dark bg-surface-dark items-center justify-center px-4 rounded-r-lg border-l-0 min-w-[60px]">
+<span class="text-sm font-medium">kg</span>
+</div>
+</div>
+<p class="text-text-secondary text-xs font-normal leading-normal pt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">info</span> 
+                        범위: 1 - 300 kg
+                    </p>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-4 bg-[#0d141c]"></div>
+<!-- Section 3: Medical History -->
+<div class="flex flex-col border-b border-border-dark bg-background-dark border-t border-t-border-dark">
+<div class="flex items-center gap-2 px-4 pt-6 pb-2">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">history_edu</span>
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">병력 (Medical History)</h3>
+</div>
+<!-- Field: Conditions (Checkbox) -->
+<div class="flex flex-col gap-3 px-4 py-4">
+<label class="text-white text-sm font-medium leading-normal">기저 질환 (Conditions)</label>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-not-allowed opacity-90">
+<div class="flex items-center justify-center size-5 rounded border border-primary bg-primary text-white">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<span class="text-white text-base">고혈압 (Hypertension)</span>
+</label>
+<label class="flex items-center gap-3 cursor-not-allowed opacity-90">
+<div class="size-5 rounded border border-border-dark bg-surface-dark"></div>
+<span class="text-text-secondary text-base">당뇨병 (Diabetes)</span>
+</label>
+<label class="flex items-center gap-3 cursor-not-allowed opacity-90">
+<div class="size-5 rounded border border-border-dark bg-surface-dark"></div>
+<span class="text-text-secondary text-base">천식 (Asthma)</span>
+</label>
+</div>
+</div>
+<!-- Field: Severity (Dropdown) -->
+<div class="flex flex-col gap-1 px-4 py-3 pb-6">
+<label class="text-white text-sm font-medium leading-normal pb-1.5">증상 심각도 (Severity)</label>
+<div class="relative w-full cursor-not-allowed opacity-90">
+<div class="w-full bg-surface-dark border border-border-dark text-white text-base rounded-lg h-12 px-4 flex items-center justify-between">
+<span class="text-text-secondary">선택하세요...</span>
+<span class="material-symbols-outlined text-text-secondary">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty Space for scrolling -->
+<div class="h-10 bg-background-dark"></div>
+</main>
+<!-- Simulated Floating Action Button (Disabled) -->
+<div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto p-4 bg-background-dark/90 backdrop-blur border-t border-border-dark z-20">
+<button class="w-full h-12 bg-primary/50 text-white/50 font-bold rounded-lg text-base flex items-center justify-center gap-2 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined">save</span>
+                템플릿 저장 (비활성)
+            </button>
+</div>
+</div>
+</body></html>

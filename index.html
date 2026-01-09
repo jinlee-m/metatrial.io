@@ -3,379 +3,507 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>metaTrial_io 화면 목록</title>
+  <title>metaTrial_io Prototype Hub</title>
   <style>
     :root {
-      --bg: #0f1216;
-      --panel: #151a20;
-      --text: #e9edf2;
-      --muted: #9aa4b2;
-      --accent: #4aa3ff;
-      --border: #262c35;
+      --bg: #0b1117;
+      --panel: #121a24;
+      --card: #16202c;
+      --text: #e7edf6;
+      --muted: #8aa0b8;
+      --accent: #2dd4bf;
+      --accent-2: #3b82f6;
+      --border: #1f2a38;
+      --shadow: 0 12px 30px rgba(8, 18, 29, 0.45);
     }
     * { box-sizing: border-box; }
     body {
-      margin: 0; padding: 32px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
-      background: var(--bg); color: var(--text);
+      margin: 0; min-height: 100vh; color: var(--text);
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Pretendard", sans-serif;
+      background: radial-gradient(1200px 700px at 10% -20%, rgba(59,130,246,0.25), transparent 60%),
+        radial-gradient(900px 600px at 90% -10%, rgba(45,212,191,0.18), transparent 60%),
+        #0b1117;
     }
-    header { max-width: 1100px; margin: 0 auto 24px; }
-    h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: -0.02em; }
-    p { margin: 0; color: var(--muted); }
-    .section { max-width: 1100px; margin: 20px auto; }
-    .section h2 { font-size: 16px; margin: 0 0 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-    .list { display: grid; gap: 8px; }
+    .shell {
+      display: grid; grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      gap: 24px; padding: 28px; max-width: 1400px; margin: 0 auto;
+    }
+    header {
+      grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 16px;
+      padding: 18px 20px; background: linear-gradient(135deg, rgba(18,26,36,0.9), rgba(22,32,44,0.85));
+      border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .logo {
+      width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center;
+      background: linear-gradient(135deg, #3b82f6, #2dd4bf); color: #04101c; font-weight: 800;
+      box-shadow: 0 8px 20px rgba(59,130,246,0.35);
+    }
+    .title h1 { margin: 0; font-size: 22px; letter-spacing: -0.02em; }
+    .title p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    .actions { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+    .pill {
+      padding: 8px 12px; border-radius: 999px; border: 1px solid var(--border);
+      background: #0f1622; color: var(--muted); font-size: 12px; font-weight: 600;
+    }
+    .sidebar {
+      background: rgba(18,26,36,0.9); border: 1px solid var(--border); border-radius: 18px;
+      padding: 18px; box-shadow: var(--shadow); height: calc(100vh - 190px);
+      overflow: hidden; display: flex; flex-direction: column; gap: 14px;
+    }
+    .search {
+      display: flex; align-items: center; gap: 8px; padding: 10px 12px;
+      border-radius: 12px; background: #0f1622; border: 1px solid var(--border);
+    }
+    .search input {
+      flex: 1; background: transparent; border: none; color: var(--text);
+      font-size: 13px; outline: none;
+    }
+    .groups { overflow: auto; padding-right: 6px; }
+    .group { margin-bottom: 16px; }
+    .group-title {
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted);
+      margin: 12px 0 8px;
+    }
+    .group-list { display: grid; gap: 8px; }
     .item {
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-      padding: 10px 14px; border-radius: 10px; text-decoration: none; color: inherit;
-      background: var(--panel); border: 1px solid var(--border);
-      transition: border-color 120ms ease, transform 120ms ease;
+      background: var(--card); border: 1px solid transparent; border-radius: 12px; padding: 10px 12px;
+      text-align: left; cursor: pointer; transition: 0.15s ease; color: inherit;
     }
-    .item:hover { border-color: var(--accent); transform: translateY(-1px); }
-    .title { font-size: 14px; font-weight: 600; }
-    .path { font-size: 12px; color: var(--muted); }
-    .note { color: var(--muted); font-size: 12px; margin-top: 10px; }
+    .item:hover { border-color: rgba(45,212,191,0.5); transform: translateY(-1px); }
+    .item.active { border-color: var(--accent); box-shadow: 0 10px 24px rgba(45,212,191,0.15); }
+    .item-title { display: block; font-weight: 700; font-size: 13px; }
+    .item-path { display: block; font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    .viewer {
+      background: rgba(18,26,36,0.9); border: 1px solid var(--border); border-radius: 18px;
+      padding: 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 12px;
+      height: calc(100vh - 190px);
+    }
+    .viewer-bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 10px 12px; border-radius: 12px; background: #0f1622; border: 1px solid var(--border);
+    }
+    .viewer-title { font-weight: 700; font-size: 14px; }
+    .viewer-actions a {
+      color: #0b1117; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      padding: 8px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px; border: none;
+    }
+    .frame-wrap {
+      flex: 1; border-radius: 14px; overflow: hidden; border: 1px solid #1d2b3b; background: #0b1117;
+    }
+    iframe { width: 100%; height: 100%; border: none; background: #0b1117; }
+
+    @media (max-width: 980px) {
+      .shell { grid-template-columns: 1fr; }
+      .sidebar, .viewer { height: auto; }
+      .viewer { min-height: 520px; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>metaTrial_io 화면 목록</h1>
-    <p>목록에서 화면을 선택하면 해당 `code.html`로 이동합니다.</p>
-  </header>
-  <section class="section">
-    <h2>환자/케이스</h2>
-    <div class="list">
-      <a class="item" href="환자_상세_허브/code.html" target="_blank" rel="noopener">
-        <span class="title">환자_상세_허브</span>
-        <span class="path">환자_상세_허브</span>
-      </a>
-    </div>
-  </section>
-  <section class="section">
-    <h2>eCRF 입력 플로우</h2>
-    <div class="list">
-      <a class="item" href="제출_실패/code.html" target="_blank" rel="noopener">
-        <span class="title">제출_실패</span>
-        <span class="path">제출_실패</span>
-      </a>
-      <a class="item" href="제출_완료/code.html" target="_blank" rel="noopener">
-        <span class="title">제출_완료</span>
-        <span class="path">제출_완료</span>
-      </a>
-    </div>
-  </section>
-  <section class="section">
-    <h2>상태/오류</h2>
-    <div class="list">
-      <a class="item" href="빈_상태/code.html" target="_blank" rel="noopener">
-        <span class="title">빈_상태</span>
-        <span class="path">빈_상태</span>
-      </a>
-      <a class="item" href="에러_상태/code.html" target="_blank" rel="noopener">
-        <span class="title">에러_상태</span>
-        <span class="path">에러_상태</span>
-      </a>
-    </div>
-  </section>
-  <section class="section">
-    <h2>기타</h2>
-    <div class="list">
-      <a class="item" href="ecrf_데이터_입력_1/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_데이터_입력_1</span>
-        <span class="path">ecrf_데이터_입력_1</span>
-      </a>
-      <a class="item" href="ecrf_데이터_입력_2/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_데이터_입력_2</span>
-        <span class="path">ecrf_데이터_입력_2</span>
-      </a>
-      <a class="item" href="ecrf_데이터_입력_3/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_데이터_입력_3</span>
-        <span class="path">ecrf_데이터_입력_3</span>
-      </a>
-      <a class="item" href="ecrf_데이터_입력_4/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_데이터_입력_4</span>
-        <span class="path">ecrf_데이터_입력_4</span>
-      </a>
-      <a class="item" href="ecrf_데이터_입력_5/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_데이터_입력_5</span>
-        <span class="path">ecrf_데이터_입력_5</span>
-      </a>
-      <a class="item" href="ecrf_데이터_입력_6/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_데이터_입력_6</span>
-        <span class="path">ecrf_데이터_입력_6</span>
-      </a>
-      <a class="item" href="ecrf_데이터_입력_7/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_데이터_입력_7</span>
-        <span class="path">ecrf_데이터_입력_7</span>
-      </a>
-      <a class="item" href="ecrf_데이터_입력_8/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_데이터_입력_8</span>
-        <span class="path">ecrf_데이터_입력_8</span>
-      </a>
-      <a class="item" href="ecrf_디자인_및_관리_1/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_디자인_및_관리_1</span>
-        <span class="path">ecrf_디자인_및_관리_1</span>
-      </a>
-      <a class="item" href="ecrf_디자인_및_관리_2/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_디자인_및_관리_2</span>
-        <span class="path">ecrf_디자인_및_관리_2</span>
-      </a>
-      <a class="item" href="ecrf_템플릿_미리보기/code.html" target="_blank" rel="noopener">
-        <span class="title">ecrf_템플릿_미리보기</span>
-        <span class="path">ecrf_템플릿_미리보기</span>
-      </a>
-      <a class="item" href="sae_보고서_목록_1/code.html" target="_blank" rel="noopener">
-        <span class="title">sae_보고서_목록_1</span>
-        <span class="path">sae_보고서_목록_1</span>
-      </a>
-      <a class="item" href="sae_보고서_목록_2/code.html" target="_blank" rel="noopener">
-        <span class="title">sae_보고서_목록_2</span>
-        <span class="path">sae_보고서_목록_2</span>
-      </a>
-      <a class="item" href="sae_보고서_목록_3/code.html" target="_blank" rel="noopener">
-        <span class="title">sae_보고서_목록_3</span>
-        <span class="path">sae_보고서_목록_3</span>
-      </a>
-      <a class="item" href="sae_상세_보기_1/code.html" target="_blank" rel="noopener">
-        <span class="title">sae_상세_보기_1</span>
-        <span class="path">sae_상세_보기_1</span>
-      </a>
-      <a class="item" href="sae_상세_보기_2/code.html" target="_blank" rel="noopener">
-        <span class="title">sae_상세_보기_2</span>
-        <span class="path">sae_상세_보기_2</span>
-      </a>
-      <a class="item" href="sae_상세_보기_3/code.html" target="_blank" rel="noopener">
-        <span class="title">sae_상세_보기_3</span>
-        <span class="path">sae_상세_보기_3</span>
-      </a>
-      <a class="item" href="데이터_검토/확인_1/code.html" target="_blank" rel="noopener">
-        <span class="title">확인_1</span>
-        <span class="path">데이터_검토/확인_1</span>
-      </a>
-      <a class="item" href="데이터_검토/확인_2/code.html" target="_blank" rel="noopener">
-        <span class="title">확인_2</span>
-        <span class="path">데이터_검토/확인_2</span>
-      </a>
-      <a class="item" href="데이터_검토/확인_3/code.html" target="_blank" rel="noopener">
-        <span class="title">확인_3</span>
-        <span class="path">데이터_검토/확인_3</span>
-      </a>
-      <a class="item" href="데이터_검토/확인_4/code.html" target="_blank" rel="noopener">
-        <span class="title">확인_4</span>
-        <span class="path">데이터_검토/확인_4</span>
-      </a>
-      <a class="item" href="데이터_검토/확인_5/code.html" target="_blank" rel="noopener">
-        <span class="title">확인_5</span>
-        <span class="path">데이터_검토/확인_5</span>
-      </a>
-      <a class="item" href="데이터_검토/확인_6/code.html" target="_blank" rel="noopener">
-        <span class="title">확인_6</span>
-        <span class="path">데이터_검토/확인_6</span>
-      </a>
-      <a class="item" href="동반_약물_ecrf/code.html" target="_blank" rel="noopener">
-        <span class="title">동반_약물_ecrf</span>
-        <span class="path">동반_약물_ecrf</span>
-      </a>
-      <a class="item" href="동반_질환_ecrf/code.html" target="_blank" rel="noopener">
-        <span class="title">동반_질환_ecrf</span>
-        <span class="path">동반_질환_ecrf</span>
-      </a>
-      <a class="item" href="로그인/회원가입_1/code.html" target="_blank" rel="noopener">
-        <span class="title">회원가입_1</span>
-        <span class="path">로그인/회원가입_1</span>
-      </a>
-      <a class="item" href="로그인/회원가입_2/code.html" target="_blank" rel="noopener">
-        <span class="title">회원가입_2</span>
-        <span class="path">로그인/회원가입_2</span>
-      </a>
-      <a class="item" href="로그인/회원가입_3/code.html" target="_blank" rel="noopener">
-        <span class="title">회원가입_3</span>
-        <span class="path">로그인/회원가입_3</span>
-      </a>
-      <a class="item" href="로그인/회원가입_4/code.html" target="_blank" rel="noopener">
-        <span class="title">회원가입_4</span>
-        <span class="path">로그인/회원가입_4</span>
-      </a>
-      <a class="item" href="병력_및_과거력_ecrf_1/code.html" target="_blank" rel="noopener">
-        <span class="title">병력_및_과거력_ecrf_1</span>
-        <span class="path">병력_및_과거력_ecrf_1</span>
-      </a>
-      <a class="item" href="병력_및_과거력_ecrf_2/code.html" target="_blank" rel="noopener">
-        <span class="title">병력_및_과거력_ecrf_2</span>
-        <span class="path">병력_및_과거력_ecrf_2</span>
-      </a>
-      <a class="item" href="부작용_기록_ecrf/code.html" target="_blank" rel="noopener">
-        <span class="title">부작용_기록_ecrf</span>
-        <span class="path">부작용_기록_ecrf</span>
-      </a>
-      <a class="item" href="사용자_관리/code.html" target="_blank" rel="noopener">
-        <span class="title">사용자_관리</span>
-        <span class="path">사용자_관리</span>
-      </a>
-      <a class="item" href="사용자_상세/편집/code.html" target="_blank" rel="noopener">
-        <span class="title">편집</span>
-        <span class="path">사용자_상세/편집</span>
-      </a>
-      <a class="item" href="새_sae_보고서_작성_1/code.html" target="_blank" rel="noopener">
-        <span class="title">새_sae_보고서_작성_1</span>
-        <span class="path">새_sae_보고서_작성_1</span>
-      </a>
-      <a class="item" href="새_sae_보고서_작성_2/code.html" target="_blank" rel="noopener">
-        <span class="title">새_sae_보고서_작성_2</span>
-        <span class="path">새_sae_보고서_작성_2</span>
-      </a>
-      <a class="item" href="새_sae_보고서_작성_3/code.html" target="_blank" rel="noopener">
-        <span class="title">새_sae_보고서_작성_3</span>
-        <span class="path">새_sae_보고서_작성_3</span>
-      </a>
-      <a class="item" href="새_sae_보고서_작성_4/code.html" target="_blank" rel="noopener">
-        <span class="title">새_sae_보고서_작성_4</span>
-        <span class="path">새_sae_보고서_작성_4</span>
-      </a>
-      <a class="item" href="설정_화면_1/code.html" target="_blank" rel="noopener">
-        <span class="title">설정_화면_1</span>
-        <span class="path">설정_화면_1</span>
-      </a>
-      <a class="item" href="설정_화면_2/code.html" target="_blank" rel="noopener">
-        <span class="title">설정_화면_2</span>
-        <span class="path">설정_화면_2</span>
-      </a>
-      <a class="item" href="설정_화면_3/code.html" target="_blank" rel="noopener">
-        <span class="title">설정_화면_3</span>
-        <span class="path">설정_화면_3</span>
-      </a>
-      <a class="item" href="설정_화면_4/code.html" target="_blank" rel="noopener">
-        <span class="title">설정_화면_4</span>
-        <span class="path">설정_화면_4</span>
-      </a>
-      <a class="item" href="설정_화면_5/code.html" target="_blank" rel="noopener">
-        <span class="title">설정_화면_5</span>
-        <span class="path">설정_화면_5</span>
-      </a>
-      <a class="item" href="스플래시_화면/code.html" target="_blank" rel="noopener">
-        <span class="title">스플래시_화면</span>
-        <span class="path">스플래시_화면</span>
-      </a>
-      <a class="item" href="시작_화면_1/code.html" target="_blank" rel="noopener">
-        <span class="title">시작_화면_1</span>
-        <span class="path">시작_화면_1</span>
-      </a>
-      <a class="item" href="시작_화면_2/code.html" target="_blank" rel="noopener">
-        <span class="title">시작_화면_2</span>
-        <span class="path">시작_화면_2</span>
-      </a>
-      <a class="item" href="시작_화면_3/code.html" target="_blank" rel="noopener">
-        <span class="title">시작_화면_3</span>
-        <span class="path">시작_화면_3</span>
-      </a>
-      <a class="item" href="시작_화면_4/code.html" target="_blank" rel="noopener">
-        <span class="title">시작_화면_4</span>
-        <span class="path">시작_화면_4</span>
-      </a>
-      <a class="item" href="신체_검사_ecrf_1/code.html" target="_blank" rel="noopener">
-        <span class="title">신체_검사_ecrf_1</span>
-        <span class="path">신체_검사_ecrf_1</span>
-      </a>
-      <a class="item" href="신체_검사_ecrf_2/code.html" target="_blank" rel="noopener">
-        <span class="title">신체_검사_ecrf_2</span>
-        <span class="path">신체_검사_ecrf_2</span>
-      </a>
-      <a class="item" href="앱_개요/code.html" target="_blank" rel="noopener">
-        <span class="title">앱_개요</span>
-        <span class="path">앱_개요</span>
-      </a>
-      <a class="item" href="앱_아이콘/code.html" target="_blank" rel="noopener">
-        <span class="title">앱_아이콘</span>
-        <span class="path">앱_아이콘</span>
-      </a>
-      <a class="item" href="약물_치료_ecrf_1/code.html" target="_blank" rel="noopener">
-        <span class="title">약물_치료_ecrf_1</span>
-        <span class="path">약물_치료_ecrf_1</span>
-      </a>
-      <a class="item" href="약물_치료_ecrf_2/code.html" target="_blank" rel="noopener">
-        <span class="title">약물_치료_ecrf_2</span>
-        <span class="path">약물_치료_ecrf_2</span>
-      </a>
-      <a class="item" href="연구_방문_기록_ecrf/code.html" target="_blank" rel="noopener">
-        <span class="title">연구_방문_기록_ecrf</span>
-        <span class="path">연구_방문_기록_ecrf</span>
-      </a>
-      <a class="item" href="케이스_보고서_선택_1/code.html" target="_blank" rel="noopener">
-        <span class="title">케이스_보고서_선택_1</span>
-        <span class="path">케이스_보고서_선택_1</span>
-      </a>
-      <a class="item" href="케이스_보고서_선택_2/code.html" target="_blank" rel="noopener">
-        <span class="title">케이스_보고서_선택_2</span>
-        <span class="path">케이스_보고서_선택_2</span>
-      </a>
-      <a class="item" href="케이스_보고서_선택_3/code.html" target="_blank" rel="noopener">
-        <span class="title">케이스_보고서_선택_3</span>
-        <span class="path">케이스_보고서_선택_3</span>
-      </a>
-      <a class="item" href="케이스_보고서_선택_4/code.html" target="_blank" rel="noopener">
-        <span class="title">케이스_보고서_선택_4</span>
-        <span class="path">케이스_보고서_선택_4</span>
-      </a>
-      <a class="item" href="케이스_보고서_선택_5/code.html" target="_blank" rel="noopener">
-        <span class="title">케이스_보고서_선택_5</span>
-        <span class="path">케이스_보고서_선택_5</span>
-      </a>
-      <a class="item" href="케이스_보고서_선택_6/code.html" target="_blank" rel="noopener">
-        <span class="title">케이스_보고서_선택_6</span>
-        <span class="path">케이스_보고서_선택_6</span>
-      </a>
-      <a class="item" href="쿼리_목록/code.html" target="_blank" rel="noopener">
-        <span class="title">쿼리_목록</span>
-        <span class="path">쿼리_목록</span>
-      </a>
-      <a class="item" href="쿼리_상세/해결/code.html" target="_blank" rel="noopener">
-        <span class="title">해결</span>
-        <span class="path">쿼리_상세/해결</span>
-      </a>
-      <a class="item" href="환자_등록_ecrf_1/code.html" target="_blank" rel="noopener">
-        <span class="title">환자_등록_ecrf_1</span>
-        <span class="path">환자_등록_ecrf_1</span>
-      </a>
-      <a class="item" href="환자_등록_ecrf_2/code.html" target="_blank" rel="noopener">
-        <span class="title">환자_등록_ecrf_2</span>
-        <span class="path">환자_등록_ecrf_2</span>
-      </a>
-      <a class="item" href="환자_목록_1/code.html" target="_blank" rel="noopener">
-        <span class="title">환자_목록_1</span>
-        <span class="path">환자_목록_1</span>
-      </a>
-      <a class="item" href="환자_목록_2/code.html" target="_blank" rel="noopener">
-        <span class="title">환자_목록_2</span>
-        <span class="path">환자_목록_2</span>
-      </a>
-      <a class="item" href="환자_목록_3/code.html" target="_blank" rel="noopener">
-        <span class="title">환자_목록_3</span>
-        <span class="path">환자_목록_3</span>
-      </a>
-      <a class="item" href="환자_목록_4/code.html" target="_blank" rel="noopener">
-        <span class="title">환자_목록_4</span>
-        <span class="path">환자_목록_4</span>
-      </a>
-      <a class="item" href="환자_목록_5/code.html" target="_blank" rel="noopener">
-        <span class="title">환자_목록_5</span>
-        <span class="path">환자_목록_5</span>
-      </a>
-      <a class="item" href="환자_목록_6/code.html" target="_blank" rel="noopener">
-        <span class="title">환자_목록_6</span>
-        <span class="path">환자_목록_6</span>
-      </a>
-      <a class="item" href="활력징후_ecrf_1/code.html" target="_blank" rel="noopener">
-        <span class="title">활력징후_ecrf_1</span>
-        <span class="path">활력징후_ecrf_1</span>
-      </a>
-      <a class="item" href="활력징후_ecrf_2/code.html" target="_blank" rel="noopener">
-        <span class="title">활력징후_ecrf_2</span>
-        <span class="path">활력징후_ecrf_2</span>
-      </a>
-    </div>
-  </section>
-  <section class="section">
-    <div class="note">로컬에서 보기: 이 파일을 브라우저로 열거나, 터미널에서 <code>python3 -m http.server</code> 실행 후 http://localhost:8000 으로 접속하세요.</div>
-  </section>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div class="logo">MT</div>
+        <div class="title">
+          <h1>metaTrial Prototype Hub</h1>
+          <p>한 화면에서 모든 디자인을 탐색하고 실제 흐름처럼 확인하세요.</p>
+        </div>
+      </div>
+      <div class="actions">
+        <div class="pill">프로토타입 모드</div>
+        <div class="pill">Offline Ready</div>
+      </div>
+    </header>
+
+    <aside class="sidebar">
+      <div class="search">
+        <span style="color:var(--muted);font-size:12px;">🔎</span>
+        <input id="search" type="text" placeholder="화면 이름 또는 경로 검색" />
+      </div>
+      <div class="groups" id="groupList">
+        <div class="group">
+  <div class="group-title">환자/케이스</div>
+  <div class="group-list">
+    <button class="item" data-src="patient_detail_hub/code.html" data-label="patient_detail_hub">
+      <span class="item-title">patient_detail_hub</span>
+      <span class="item-path">patient_detail_hub</span>
+    </button>
+  </div>
+</div>
+<div class="group">
+  <div class="group-title">eCRF 입력 플로우</div>
+  <div class="group-list">
+    <button class="item" data-src="submission_failed/code.html" data-label="submission_failed">
+      <span class="item-title">submission_failed</span>
+      <span class="item-path">submission_failed</span>
+    </button>
+    <button class="item" data-src="submission_complete/code.html" data-label="submission_complete">
+      <span class="item-title">submission_complete</span>
+      <span class="item-path">submission_complete</span>
+    </button>
+  </div>
+</div>
+<div class="group">
+  <div class="group-title">상태/오류</div>
+  <div class="group-list">
+    <button class="item" data-src="empty_state/code.html" data-label="empty_state">
+      <span class="item-title">empty_state</span>
+      <span class="item-path">empty_state</span>
+    </button>
+    <button class="item" data-src="error_state/code.html" data-label="error_state">
+      <span class="item-title">error_state</span>
+      <span class="item-path">error_state</span>
+    </button>
+  </div>
+</div>
+<div class="group">
+  <div class="group-title">기타</div>
+  <div class="group-list">
+    <button class="item" data-src="ecrf_data_entry_1/code.html" data-label="ecrf_data_entry_1">
+      <span class="item-title">ecrf_data_entry_1</span>
+      <span class="item-path">ecrf_data_entry_1</span>
+    </button>
+    <button class="item" data-src="ecrf_data_entry_2/code.html" data-label="ecrf_data_entry_2">
+      <span class="item-title">ecrf_data_entry_2</span>
+      <span class="item-path">ecrf_data_entry_2</span>
+    </button>
+    <button class="item" data-src="ecrf_data_entry_3/code.html" data-label="ecrf_data_entry_3">
+      <span class="item-title">ecrf_data_entry_3</span>
+      <span class="item-path">ecrf_data_entry_3</span>
+    </button>
+    <button class="item" data-src="ecrf_data_entry_4/code.html" data-label="ecrf_data_entry_4">
+      <span class="item-title">ecrf_data_entry_4</span>
+      <span class="item-path">ecrf_data_entry_4</span>
+    </button>
+    <button class="item" data-src="ecrf_data_entry_5/code.html" data-label="ecrf_data_entry_5">
+      <span class="item-title">ecrf_data_entry_5</span>
+      <span class="item-path">ecrf_data_entry_5</span>
+    </button>
+    <button class="item" data-src="ecrf_data_entry_6/code.html" data-label="ecrf_data_entry_6">
+      <span class="item-title">ecrf_data_entry_6</span>
+      <span class="item-path">ecrf_data_entry_6</span>
+    </button>
+    <button class="item" data-src="ecrf_data_entry_7/code.html" data-label="ecrf_data_entry_7">
+      <span class="item-title">ecrf_data_entry_7</span>
+      <span class="item-path">ecrf_data_entry_7</span>
+    </button>
+    <button class="item" data-src="ecrf_data_entry_8/code.html" data-label="ecrf_data_entry_8">
+      <span class="item-title">ecrf_data_entry_8</span>
+      <span class="item-path">ecrf_data_entry_8</span>
+    </button>
+    <button class="item" data-src="ecrf_design_manage_1/code.html" data-label="ecrf_design_manage_1">
+      <span class="item-title">ecrf_design_manage_1</span>
+      <span class="item-path">ecrf_design_manage_1</span>
+    </button>
+    <button class="item" data-src="ecrf_design_manage_2/code.html" data-label="ecrf_design_manage_2">
+      <span class="item-title">ecrf_design_manage_2</span>
+      <span class="item-path">ecrf_design_manage_2</span>
+    </button>
+    <button class="item" data-src="ecrf_template_preview/code.html" data-label="ecrf_template_preview">
+      <span class="item-title">ecrf_template_preview</span>
+      <span class="item-path">ecrf_template_preview</span>
+    </button>
+    <button class="item" data-src="sae_report_list_1/code.html" data-label="sae_report_list_1">
+      <span class="item-title">sae_report_list_1</span>
+      <span class="item-path">sae_report_list_1</span>
+    </button>
+    <button class="item" data-src="sae_report_list_2/code.html" data-label="sae_report_list_2">
+      <span class="item-title">sae_report_list_2</span>
+      <span class="item-path">sae_report_list_2</span>
+    </button>
+    <button class="item" data-src="sae_report_list_3/code.html" data-label="sae_report_list_3">
+      <span class="item-title">sae_report_list_3</span>
+      <span class="item-path">sae_report_list_3</span>
+    </button>
+    <button class="item" data-src="sae_detail_view_1/code.html" data-label="sae_detail_view_1">
+      <span class="item-title">sae_detail_view_1</span>
+      <span class="item-path">sae_detail_view_1</span>
+    </button>
+    <button class="item" data-src="sae_detail_view_2/code.html" data-label="sae_detail_view_2">
+      <span class="item-title">sae_detail_view_2</span>
+      <span class="item-path">sae_detail_view_2</span>
+    </button>
+    <button class="item" data-src="sae_detail_view_3/code.html" data-label="sae_detail_view_3">
+      <span class="item-title">sae_detail_view_3</span>
+      <span class="item-path">sae_detail_view_3</span>
+    </button>
+    <button class="item" data-src="data_review/confirm_1/code.html" data-label="confirm_1">
+      <span class="item-title">confirm_1</span>
+      <span class="item-path">data_review/confirm_1</span>
+    </button>
+    <button class="item" data-src="data_review/confirm_2/code.html" data-label="confirm_2">
+      <span class="item-title">confirm_2</span>
+      <span class="item-path">data_review/confirm_2</span>
+    </button>
+    <button class="item" data-src="data_review/confirm_3/code.html" data-label="confirm_3">
+      <span class="item-title">confirm_3</span>
+      <span class="item-path">data_review/confirm_3</span>
+    </button>
+    <button class="item" data-src="data_review/confirm_4/code.html" data-label="confirm_4">
+      <span class="item-title">confirm_4</span>
+      <span class="item-path">data_review/confirm_4</span>
+    </button>
+    <button class="item" data-src="data_review/confirm_5/code.html" data-label="confirm_5">
+      <span class="item-title">confirm_5</span>
+      <span class="item-path">data_review/confirm_5</span>
+    </button>
+    <button class="item" data-src="data_review/confirm_6/code.html" data-label="confirm_6">
+      <span class="item-title">confirm_6</span>
+      <span class="item-path">data_review/confirm_6</span>
+    </button>
+    <button class="item" data-src="concomitant_meds_ecrf/code.html" data-label="concomitant_meds_ecrf">
+      <span class="item-title">concomitant_meds_ecrf</span>
+      <span class="item-path">concomitant_meds_ecrf</span>
+    </button>
+    <button class="item" data-src="comorbid_conditions_ecrf/code.html" data-label="comorbid_conditions_ecrf">
+      <span class="item-title">comorbid_conditions_ecrf</span>
+      <span class="item-path">comorbid_conditions_ecrf</span>
+    </button>
+    <button class="item" data-src="auth/login_signup_1/code.html" data-label="login_signup_1">
+      <span class="item-title">login_signup_1</span>
+      <span class="item-path">auth/login_signup_1</span>
+    </button>
+    <button class="item" data-src="auth/login_signup_2/code.html" data-label="login_signup_2">
+      <span class="item-title">login_signup_2</span>
+      <span class="item-path">auth/login_signup_2</span>
+    </button>
+    <button class="item" data-src="auth/login_signup_3/code.html" data-label="login_signup_3">
+      <span class="item-title">login_signup_3</span>
+      <span class="item-path">auth/login_signup_3</span>
+    </button>
+    <button class="item" data-src="auth/login_signup_4/code.html" data-label="login_signup_4">
+      <span class="item-title">login_signup_4</span>
+      <span class="item-path">auth/login_signup_4</span>
+    </button>
+    <button class="item" data-src="medical_and_past_history_ecrf_1/code.html" data-label="medical_and_past_history_ecrf_1">
+      <span class="item-title">medical_and_past_history_ecrf_1</span>
+      <span class="item-path">medical_and_past_history_ecrf_1</span>
+    </button>
+    <button class="item" data-src="medical_and_past_history_ecrf_2/code.html" data-label="medical_and_past_history_ecrf_2">
+      <span class="item-title">medical_and_past_history_ecrf_2</span>
+      <span class="item-path">medical_and_past_history_ecrf_2</span>
+    </button>
+    <button class="item" data-src="adverse_events_ecrf/code.html" data-label="adverse_events_ecrf">
+      <span class="item-title">adverse_events_ecrf</span>
+      <span class="item-path">adverse_events_ecrf</span>
+    </button>
+    <button class="item" data-src="user_management/code.html" data-label="user_management">
+      <span class="item-title">user_management</span>
+      <span class="item-path">user_management</span>
+    </button>
+    <button class="item" data-src="user_detail/edit/code.html" data-label="edit">
+      <span class="item-title">edit</span>
+      <span class="item-path">user_detail/edit</span>
+    </button>
+    <button class="item" data-src="new_sae_report_1/code.html" data-label="new_sae_report_1">
+      <span class="item-title">new_sae_report_1</span>
+      <span class="item-path">new_sae_report_1</span>
+    </button>
+    <button class="item" data-src="new_sae_report_2/code.html" data-label="new_sae_report_2">
+      <span class="item-title">new_sae_report_2</span>
+      <span class="item-path">new_sae_report_2</span>
+    </button>
+    <button class="item" data-src="new_sae_report_3/code.html" data-label="new_sae_report_3">
+      <span class="item-title">new_sae_report_3</span>
+      <span class="item-path">new_sae_report_3</span>
+    </button>
+    <button class="item" data-src="new_sae_report_4/code.html" data-label="new_sae_report_4">
+      <span class="item-title">new_sae_report_4</span>
+      <span class="item-path">new_sae_report_4</span>
+    </button>
+    <button class="item" data-src="settings_screen_1/code.html" data-label="settings_screen_1">
+      <span class="item-title">settings_screen_1</span>
+      <span class="item-path">settings_screen_1</span>
+    </button>
+    <button class="item" data-src="settings_screen_2/code.html" data-label="settings_screen_2">
+      <span class="item-title">settings_screen_2</span>
+      <span class="item-path">settings_screen_2</span>
+    </button>
+    <button class="item" data-src="settings_screen_3/code.html" data-label="settings_screen_3">
+      <span class="item-title">settings_screen_3</span>
+      <span class="item-path">settings_screen_3</span>
+    </button>
+    <button class="item" data-src="settings_screen_4/code.html" data-label="settings_screen_4">
+      <span class="item-title">settings_screen_4</span>
+      <span class="item-path">settings_screen_4</span>
+    </button>
+    <button class="item" data-src="settings_screen_5/code.html" data-label="settings_screen_5">
+      <span class="item-title">settings_screen_5</span>
+      <span class="item-path">settings_screen_5</span>
+    </button>
+    <button class="item" data-src="splash_screen/code.html" data-label="splash_screen">
+      <span class="item-title">splash_screen</span>
+      <span class="item-path">splash_screen</span>
+    </button>
+    <button class="item" data-src="start_screen_1/code.html" data-label="start_screen_1">
+      <span class="item-title">start_screen_1</span>
+      <span class="item-path">start_screen_1</span>
+    </button>
+    <button class="item" data-src="start_screen_2/code.html" data-label="start_screen_2">
+      <span class="item-title">start_screen_2</span>
+      <span class="item-path">start_screen_2</span>
+    </button>
+    <button class="item" data-src="start_screen_3/code.html" data-label="start_screen_3">
+      <span class="item-title">start_screen_3</span>
+      <span class="item-path">start_screen_3</span>
+    </button>
+    <button class="item" data-src="start_screen_4/code.html" data-label="start_screen_4">
+      <span class="item-title">start_screen_4</span>
+      <span class="item-path">start_screen_4</span>
+    </button>
+    <button class="item" data-src="physical_exam_ecrf_1/code.html" data-label="physical_exam_ecrf_1">
+      <span class="item-title">physical_exam_ecrf_1</span>
+      <span class="item-path">physical_exam_ecrf_1</span>
+    </button>
+    <button class="item" data-src="physical_exam_ecrf_2/code.html" data-label="physical_exam_ecrf_2">
+      <span class="item-title">physical_exam_ecrf_2</span>
+      <span class="item-path">physical_exam_ecrf_2</span>
+    </button>
+    <button class="item" data-src="app_overview/code.html" data-label="app_overview">
+      <span class="item-title">app_overview</span>
+      <span class="item-path">app_overview</span>
+    </button>
+    <button class="item" data-src="app_icon/code.html" data-label="app_icon">
+      <span class="item-title">app_icon</span>
+      <span class="item-path">app_icon</span>
+    </button>
+    <button class="item" data-src="medication_therapy_ecrf_1/code.html" data-label="medication_therapy_ecrf_1">
+      <span class="item-title">medication_therapy_ecrf_1</span>
+      <span class="item-path">medication_therapy_ecrf_1</span>
+    </button>
+    <button class="item" data-src="medication_therapy_ecrf_2/code.html" data-label="medication_therapy_ecrf_2">
+      <span class="item-title">medication_therapy_ecrf_2</span>
+      <span class="item-path">medication_therapy_ecrf_2</span>
+    </button>
+    <button class="item" data-src="study_visit_record_ecrf/code.html" data-label="study_visit_record_ecrf">
+      <span class="item-title">study_visit_record_ecrf</span>
+      <span class="item-path">study_visit_record_ecrf</span>
+    </button>
+    <button class="item" data-src="case_report_select_1/code.html" data-label="case_report_select_1">
+      <span class="item-title">case_report_select_1</span>
+      <span class="item-path">case_report_select_1</span>
+    </button>
+    <button class="item" data-src="case_report_select_2/code.html" data-label="case_report_select_2">
+      <span class="item-title">case_report_select_2</span>
+      <span class="item-path">case_report_select_2</span>
+    </button>
+    <button class="item" data-src="case_report_select_3/code.html" data-label="case_report_select_3">
+      <span class="item-title">case_report_select_3</span>
+      <span class="item-path">case_report_select_3</span>
+    </button>
+    <button class="item" data-src="case_report_select_4/code.html" data-label="case_report_select_4">
+      <span class="item-title">case_report_select_4</span>
+      <span class="item-path">case_report_select_4</span>
+    </button>
+    <button class="item" data-src="case_report_select_5/code.html" data-label="case_report_select_5">
+      <span class="item-title">case_report_select_5</span>
+      <span class="item-path">case_report_select_5</span>
+    </button>
+    <button class="item" data-src="case_report_select_6/code.html" data-label="case_report_select_6">
+      <span class="item-title">case_report_select_6</span>
+      <span class="item-path">case_report_select_6</span>
+    </button>
+    <button class="item" data-src="query_list/code.html" data-label="query_list">
+      <span class="item-title">query_list</span>
+      <span class="item-path">query_list</span>
+    </button>
+    <button class="item" data-src="query_detail/resolve/code.html" data-label="resolve">
+      <span class="item-title">resolve</span>
+      <span class="item-path">query_detail/resolve</span>
+    </button>
+    <button class="item" data-src="patient_registration_ecrf_1/code.html" data-label="patient_registration_ecrf_1">
+      <span class="item-title">patient_registration_ecrf_1</span>
+      <span class="item-path">patient_registration_ecrf_1</span>
+    </button>
+    <button class="item" data-src="patient_registration_ecrf_2/code.html" data-label="patient_registration_ecrf_2">
+      <span class="item-title">patient_registration_ecrf_2</span>
+      <span class="item-path">patient_registration_ecrf_2</span>
+    </button>
+    <button class="item" data-src="patient_list_1/code.html" data-label="patient_list_1">
+      <span class="item-title">patient_list_1</span>
+      <span class="item-path">patient_list_1</span>
+    </button>
+    <button class="item" data-src="patient_list_2/code.html" data-label="patient_list_2">
+      <span class="item-title">patient_list_2</span>
+      <span class="item-path">patient_list_2</span>
+    </button>
+    <button class="item" data-src="patient_list_3/code.html" data-label="patient_list_3">
+      <span class="item-title">patient_list_3</span>
+      <span class="item-path">patient_list_3</span>
+    </button>
+    <button class="item" data-src="patient_list_4/code.html" data-label="patient_list_4">
+      <span class="item-title">patient_list_4</span>
+      <span class="item-path">patient_list_4</span>
+    </button>
+    <button class="item" data-src="patient_list_5/code.html" data-label="patient_list_5">
+      <span class="item-title">patient_list_5</span>
+      <span class="item-path">patient_list_5</span>
+    </button>
+    <button class="item" data-src="patient_list_6/code.html" data-label="patient_list_6">
+      <span class="item-title">patient_list_6</span>
+      <span class="item-path">patient_list_6</span>
+    </button>
+    <button class="item" data-src="vital_signs_ecrf_1/code.html" data-label="vital_signs_ecrf_1">
+      <span class="item-title">vital_signs_ecrf_1</span>
+      <span class="item-path">vital_signs_ecrf_1</span>
+    </button>
+    <button class="item" data-src="vital_signs_ecrf_2/code.html" data-label="vital_signs_ecrf_2">
+      <span class="item-title">vital_signs_ecrf_2</span>
+      <span class="item-path">vital_signs_ecrf_2</span>
+    </button>
+  </div>
+</div>
+      </div>
+    </aside>
+
+    <section class="viewer">
+      <div class="viewer-bar">
+        <div class="viewer-title" id="viewerTitle">patient_detail_hub/code.html</div>
+        <div class="viewer-actions">
+          <a id="openTab" href="patient_detail_hub/code.html" target="_blank" rel="noopener">새 탭 열기 ↗</a>
+        </div>
+      </div>
+      <div class="frame-wrap">
+        <iframe id="preview" src="patient_detail_hub/code.html" title="preview"></iframe>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const items = Array.from(document.querySelectorAll('.item'));
+    const preview = document.getElementById('preview');
+    const viewerTitle = document.getElementById('viewerTitle');
+    const openTab = document.getElementById('openTab');
+    const search = document.getElementById('search');
+
+    function setActive(btn) {
+      items.forEach((item) => item.classList.remove('active'));
+      btn.classList.add('active');
+      const src = btn.dataset.src;
+      const label = btn.dataset.label || src;
+      const encoded = encodeURI(src);
+      preview.src = encoded;
+      viewerTitle.textContent = label;
+      openTab.href = encoded;
+    }
+
+    if (items[0]) setActive(items[0]);
+
+    items.forEach((btn) => {
+      btn.addEventListener('click', () => setActive(btn));
+    });
+
+    search.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      items.forEach((btn) => {
+        const hay = (btn.dataset.label + ' ' + btn.dataset.src).toLowerCase();
+        btn.style.display = hay.includes(q) ? 'block' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>

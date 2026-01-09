@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>병력 및 과거력 eCRF</title>
+
+
+<link href="../assets/inter.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<script src="../assets/tailwindcdn.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#192633",
+                        "border-dark": "#324d67",
+                        "text-secondary": "#92adc9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>.dark ::-webkit-scrollbar {
+            width: 8px;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #101922; 
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #324d67; 
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #4a6fa5; 
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;scrollbar-width: none;}
+    </style>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-hidden h-screen flex flex-col">
+<a data-codex-home-link target="_top" href="../index.html" style="position:fixed;top:18px;left:18px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:9999px;background:linear-gradient(135deg,#1d4ed8,#0ea5e9);color:#fff;font:700 12px/1.1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans',Arial,sans-serif;text-decoration:none;border:1px solid rgba(255,255,255,0.35);box-shadow:0 10px 25px rgba(2,132,199,0.35),0 2px 6px rgba(0,0,0,0.2);letter-spacing:0.02em;">◀ 목록으로</a>
+<header class="flex-none bg-background-light dark:bg-background-dark border-b dark:border-border-dark/30 z-20">
+<div class="flex items-center justify-between p-4 pb-2">
+<button class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
+                병력 및 과거력
+            </h2>
+</div>
+<div class="bg-background-light dark:bg-background-dark pb-2">
+<p class="text-slate-500 dark:text-text-secondary text-sm font-medium leading-normal px-4 text-center">
+                Subject ID: <span class="text-primary">001-204</span> | Visit: <span class="text-slate-700 dark:text-white">Screening</span>
+</p>
+</div>
+<div class="px-4 pb-4 bg-background-light dark:bg-background-dark">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-xs font-semibold text-primary">진행률 (Progress)</span>
+<span class="text-xs font-medium text-slate-500 dark:text-text-secondary">2/4 단계 완료</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-surface-dark rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-2 rounded-full transition-all duration-500 ease-out" style="width: 50%"></div>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto no-scrollbar pb-24 px-4 pt-4">
+<div class="mb-4 rounded-xl border border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark/40 overflow-hidden shadow-sm">
+<button class="w-full flex items-center justify-between p-4 bg-slate-50 dark:bg-surface-dark border-b dark:border-border-dark text-left">
+<div class="flex flex-col">
+<h3 class="text-base font-bold dark:text-white">주요 병력 (Medical History)</h3>
+<span class="text-xs text-slate-500 dark:text-text-secondary">Previous conditions &amp; diagnoses</span>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">keyboard_arrow_up</span>
+</button>
+<div class="p-4 space-y-5">
+<label class="flex flex-col w-full">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal pb-2">진단명 (Diagnosis Name)</p>
+<input class="form-input flex w-full rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 dark:border-border-dark bg-slate-50 dark:bg-surface-dark h-12 placeholder:text-slate-400 dark:placeholder:text-text-secondary px-4 text-base" placeholder="예: 고혈압 (Hypertension)" value="고혈압"/>
+</label>
+<label class="flex flex-col w-full">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal pb-2">진단 일자 (Diagnosis Date)</p>
+<div class="relative flex w-full items-center">
+<input class="form-input flex w-full rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 dark:border-border-dark bg-slate-50 dark:bg-surface-dark h-12 placeholder:text-slate-400 dark:placeholder:text-text-secondary pl-4 pr-10 text-base" placeholder="YYYY-MM-DD" value="2020-05-12"/>
+<div class="absolute right-3 text-slate-400 dark:text-text-secondary pointer-events-none flex items-center">
+<span class="material-symbols-outlined" style="font-size: 20px;">calendar_today</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<div class="mb-4 rounded-xl border border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark/40 overflow-hidden shadow-sm">
+<button class="w-full flex items-center justify-between p-4 bg-slate-50 dark:bg-surface-dark border-b dark:border-border-dark text-left">
+<div class="flex flex-col">
+<h3 class="text-base font-bold dark:text-white">알레르기 정보 (Allergies)</h3>
+<span class="text-xs text-slate-500 dark:text-text-secondary">Drug &amp; food allergies</span>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">keyboard_arrow_up</span>
+</button>
+<div class="p-4 space-y-5">
+<div class="flex flex-col w-full">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal pb-3">알레르기 유무 (Has Allergies?)</p>
+<div class="flex gap-4">
+<label class="flex-1 cursor-pointer">
+<input checked="" class="peer sr-only" name="allergies" type="radio"/>
+<div class="flex items-center justify-center py-3 rounded-lg border border-slate-300 dark:border-border-dark bg-slate-50 dark:bg-surface-dark text-slate-500 dark:text-text-secondary peer-checked:bg-primary/20 peer-checked:border-primary peer-checked:text-primary transition-all font-medium">
+                                예 (Yes)
+                            </div>
+</label>
+<label class="flex-1 cursor-pointer">
+<input class="peer sr-only" name="allergies" type="radio"/>
+<div class="flex items-center justify-center py-3 rounded-lg border border-slate-300 dark:border-border-dark bg-slate-50 dark:bg-surface-dark text-slate-500 dark:text-text-secondary peer-checked:bg-primary/20 peer-checked:border-primary peer-checked:text-primary transition-all font-medium">
+                                아니오 (No)
+                            </div>
+</label>
+</div>
+</div>
+<label class="flex flex-col w-full">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal pb-2">원인 및 증상 (Cause &amp; Symptoms)</p>
+<textarea class="form-textarea flex w-full rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-300 dark:border-border-dark bg-slate-50 dark:bg-surface-dark min-h-[100px] placeholder:text-slate-400 dark:placeholder:text-text-secondary p-4 text-base resize-none" placeholder="알레르기 원인 물질과 반응 증상을 상세히 기술하세요."></textarea>
+</label>
+</div>
+</div>
+<div class="mb-4 rounded-xl border border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark/40 overflow-hidden shadow-sm opacity-90">
+<button class="w-full flex items-center justify-between p-4 bg-slate-50 dark:bg-surface-dark text-left">
+<div class="flex flex-col">
+<h3 class="text-base font-bold dark:text-white">과거 수술력 (Surgical History)</h3>
+<span class="text-xs text-slate-500 dark:text-text-secondary">Major surgeries &amp; procedures</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-text-secondary" style="font-size: 24px;">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="h-6"></div>
+</main>
+<footer class="fixed bottom-0 left-0 w-full bg-white dark:bg-background-dark border-t border-slate-200 dark:border-border-dark/50 p-4 z-30">
+<div class="flex gap-4 max-w-[600px] mx-auto">
+<button class="flex-1 h-12 rounded-lg border border-slate-300 dark:border-border-dark bg-transparent text-slate-700 dark:text-text-secondary font-medium hover:bg-slate-50 dark:hover:bg-surface-dark transition-colors active:scale-[0.98]">
+                취소 (Cancel)
+            </button>
+<button class="flex-1 h-12 rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all active:scale-[0.98]">
+                저장 (Save)
+            </button>
+</div>
+</footer>
+
+</body></html>

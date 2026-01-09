@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="light" lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>제출 완료 - e-CRF</title>
+    <link href="../assets/inter.css" rel="stylesheet"/>
+    <link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+    <script src="../assets/tailwindcdn.js"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Inter", "Noto Sans", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body { min-height: max(884px, 100dvh); }
+    </style>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<a data-codex-home-link target="_top" href="../index.html" style="position:fixed;top:18px;left:18px;z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:9999px;background:linear-gradient(135deg,#1d4ed8,#0ea5e9);color:#fff;font:700 12px/1.1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans',Arial,sans-serif;text-decoration:none;border:1px solid rgba(255,255,255,0.35);box-shadow:0 10px 25px rgba(2,132,199,0.35),0 2px 6px rgba(0,0,0,0.2);letter-spacing:0.02em;">◀ 목록으로</a>
+    <div class="relative flex min-h-screen w-full flex-col items-center justify-center px-6 py-10 max-w-md mx-auto">
+      <div class="w-full rounded-3xl bg-white dark:bg-[#1a2632] border border-slate-200 dark:border-slate-800 shadow-sm p-6 text-center">
+        <div class="mx-auto w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+          <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-[32px]">task_alt</span>
+        </div>
+        <h1 class="mt-4 text-2xl font-bold tracking-tight">제출 완료</h1>
+        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">
+          eCRF 데이터가 성공적으로 제출되었습니다. 변경 사항은 감사 로그에 기록됩니다.
+        </p>
+        <div class="mt-6 grid gap-3">
+          <a class="w-full flex items-center justify-center rounded-xl bg-primary text-white font-semibold py-3 hover:bg-blue-600 transition-colors" href="../patient_detail_hub/code.html">
+            환자 상세로 이동
+          </a>
+          <a class="w-full flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-3 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" href="../patient_list_1/code.html">
+            환자 목록 보기
+          </a>
+        </div>
+      </div>
+      <p class="mt-6 text-xs text-slate-400">제출 ID: <span data-proto-submission-id="true">CRF-2023-10-24-001</span></p>
+    </div>
+  
+<script src="../assets/proto.js"></script>
+</body>
+</html>
