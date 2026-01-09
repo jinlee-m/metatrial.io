@@ -1,3 +1,9 @@
+import { templates } from "../../../components/mockData";
+
+export function generateStaticParams() {
+  return templates.map((template) => ({ id: template.id }));
+}
+
 export default function TemplatePreviewPage({ params }: { params: { id: string } }) {
   return (
     <div className="flex flex-col gap-6">

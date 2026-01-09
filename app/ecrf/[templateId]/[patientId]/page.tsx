@@ -1,3 +1,14 @@
+import { patients, templates } from "../../../components/mockData";
+
+export function generateStaticParams() {
+  return templates.flatMap((template) =>
+    patients.map((patient) => ({
+      templateId: template.id,
+      patientId: patient.id,
+    }))
+  );
+}
+
 export default function EcrfPage({ params }: { params: { templateId: string; patientId: string } }) {
   return (
     <div className="flex flex-col gap-6">

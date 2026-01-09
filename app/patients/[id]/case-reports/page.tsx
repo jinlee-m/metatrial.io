@@ -1,4 +1,10 @@
 import Link from "next/link";
+import { patients } from "../../../components/mockData";
+
+export function generateStaticParams() {
+  return patients.map((patient) => ({ id: patient.id }));
+}
+
 
 export default function CaseReportsPage({ params }: { params: { id: string } }) {
   return (

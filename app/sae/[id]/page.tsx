@@ -1,3 +1,9 @@
+import { saes } from "../../components/mockData";
+
+export function generateStaticParams() {
+  return saes.map((sae) => ({ id: sae.id }));
+}
+
 export default function SaeDetailPage({ params }: { params: { id: string } }) {
   return (
     <div className="flex flex-col gap-6">

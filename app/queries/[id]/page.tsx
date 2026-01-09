@@ -1,3 +1,9 @@
+import { queries } from "../../components/mockData";
+
+export function generateStaticParams() {
+  return queries.map((query) => ({ id: query.id }));
+}
+
 export default function QueryDetailPage({ params }: { params: { id: string } }) {
   return (
     <div className="flex flex-col gap-6">
