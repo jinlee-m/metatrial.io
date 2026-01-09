@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vital Signs eCRF</title>
+<link href="../assets/inter.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<script src="../assets/tailwindcdn.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#192633",
+                        "border-dark": "#324d67",
+                        "text-secondary": "#92adc9"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased overflow-hidden">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden text-slate-900 dark:text-white">
+<!-- Top App Bar -->
+<header class="flex items-center bg-surface-dark dark:bg-[#111a22] p-4 pt-12 pb-4 justify-between sticky top-0 z-50 border-b border-border-dark dark:border-white/5">
+<button class="text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
+                Vital Signs
+            </h2>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto pb-32">
+<!-- Patient Context Banner -->
+<div class="flex flex-wrap gap-3 px-4 py-4 bg-surface-dark/50 border-b border-border-dark dark:border-white/5">
+<div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-1 rounded-lg border border-border-dark bg-background-dark p-3 items-start">
+<p class="text-primary tracking-light text-xl font-bold leading-tight">001-102</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-secondary text-sm">person</span>
+<p class="text-text-secondary text-xs font-normal uppercase tracking-wider">Subject ID</p>
+</div>
+</div>
+<div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-1 rounded-lg border border-border-dark bg-background-dark p-3 items-start">
+<p class="text-white tracking-light text-xl font-bold leading-tight">Screening</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-secondary text-sm">event_note</span>
+<p class="text-text-secondary text-xs font-normal uppercase tracking-wider">Visit Name</p>
+</div>
+</div>
+</div>
+<!-- Measurement Details Section -->
+<div class="mt-2">
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Measurement Details</h3>
+<!-- Date/Time Picker -->
+<div class="px-4 py-2">
+<label class="flex flex-col w-full">
+<p class="text-white text-sm font-medium leading-normal pb-2">Date of Measurement</p>
+<div class="flex w-full items-stretch rounded-lg group focus-within:ring-2 focus-within:ring-primary">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg rounded-r-none text-white focus:outline-0 focus:ring-0 border border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary px-4 text-base font-normal leading-normal [color-scheme:dark]" type="datetime-local" value="2023-10-27T14:30"/>
+<div class="text-text-secondary flex border border-l-0 border-border-dark bg-surface-dark items-center justify-center px-4 rounded-r-lg group-hover:bg-[#1e2d3d] transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Vital Signs Data Section -->
+<div class="mt-2">
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-6">Vital Signs Data</h3>
+<!-- Blood Pressure (Grouped) -->
+<div class="px-4 py-3">
+<p class="text-white text-sm font-medium leading-normal pb-2">Blood Pressure</p>
+<div class="flex gap-4 items-start">
+<!-- Systolic -->
+<div class="flex-1">
+<div class="flex w-full items-stretch rounded-lg focus-within:ring-2 focus-within:ring-primary transition-shadow">
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg rounded-r-none text-white focus:outline-0 focus:ring-0 border border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary/50 px-4 text-base font-normal leading-normal text-center appearance-none" placeholder="120" type="number"/>
+<div class="text-text-secondary flex border border-l-0 border-border-dark bg-surface-dark items-center justify-center px-3 rounded-r-lg text-xs font-medium">
+                                    SYS
+                                </div>
+</div>
+<p class="text-text-secondary text-xs mt-1.5 pl-1">Systolic (mmHg)</p>
+</div>
+<!-- Divider -->
+<div class="text-text-secondary py-3 font-light text-xl">/</div>
+<!-- Diastolic -->
+<div class="flex-1">
+<div class="flex w-full items-stretch rounded-lg focus-within:ring-2 focus-within:ring-primary transition-shadow">
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg rounded-r-none text-white focus:outline-0 focus:ring-0 border border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary/50 px-4 text-base font-normal leading-normal text-center appearance-none" placeholder="80" type="number"/>
+<div class="text-text-secondary flex border border-l-0 border-border-dark bg-surface-dark items-center justify-center px-3 rounded-r-lg text-xs font-medium">
+                                    DIA
+                                </div>
+</div>
+<p class="text-text-secondary text-xs mt-1.5 pl-1">Diastolic (mmHg)</p>
+</div>
+</div>
+</div>
+<!-- Pulse Rate -->
+<div class="px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-white text-sm font-medium leading-normal pb-2">Pulse Rate</p>
+<div class="flex w-full items-stretch rounded-lg focus-within:ring-2 focus-within:ring-primary transition-shadow">
+<div class="text-primary flex border border-r-0 border-border-dark bg-surface-dark items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined">monitor_heart</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg rounded-l-none rounded-r-none text-white focus:outline-0 focus:ring-0 border border-l-0 border-r-0 border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary/50 px-2 text-base font-normal leading-normal appearance-none" placeholder="72" type="number"/>
+<div class="text-text-secondary flex border border-l-0 border-border-dark bg-surface-dark items-center justify-center px-4 rounded-r-lg text-sm font-medium">
+                                bpm
+                            </div>
+</div>
+</label>
+</div>
+<!-- Respiratory Rate -->
+<div class="px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-white text-sm font-medium leading-normal pb-2">Respiratory Rate</p>
+<div class="flex w-full items-stretch rounded-lg focus-within:ring-2 focus-within:ring-primary transition-shadow">
+<div class="text-primary flex border border-r-0 border-border-dark bg-surface-dark items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined">air</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg rounded-l-none rounded-r-none text-white focus:outline-0 focus:ring-0 border border-l-0 border-r-0 border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary/50 px-2 text-base font-normal leading-normal appearance-none" placeholder="16" type="number"/>
+<div class="text-text-secondary flex border border-l-0 border-border-dark bg-surface-dark items-center justify-center px-4 rounded-r-lg text-sm font-medium">
+                                breaths/min
+                            </div>
+</div>
+</label>
+</div>
+<!-- Temperature -->
+<div class="px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-white text-sm font-medium leading-normal pb-2">Temperature</p>
+<div class="flex w-full items-stretch rounded-lg focus-within:ring-2 focus-within:ring-primary transition-shadow">
+<div class="text-primary flex border border-r-0 border-border-dark bg-surface-dark items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined">thermostat</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg rounded-l-none rounded-r-none text-white focus:outline-0 focus:ring-0 border border-l-0 border-r-0 border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary/50 px-2 text-base font-normal leading-normal appearance-none" placeholder="36.5" step="0.1" type="number"/>
+<div class="text-text-secondary flex border border-l-0 border-border-dark bg-surface-dark items-center justify-center px-4 rounded-r-lg text-sm font-medium">
+                                °C
+                            </div>
+</div>
+</label>
+</div>
+<!-- Oxygen Saturation -->
+<div class="px-4 py-3">
+<label class="flex flex-col w-full">
+<p class="text-white text-sm font-medium leading-normal pb-2">Oxygen Saturation (SpO2)</p>
+<div class="flex w-full items-stretch rounded-lg focus-within:ring-2 focus-within:ring-primary transition-shadow">
+<div class="text-primary flex border border-r-0 border-border-dark bg-surface-dark items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined">opacity</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg rounded-l-none rounded-r-none text-white focus:outline-0 focus:ring-0 border border-l-0 border-r-0 border-border-dark bg-surface-dark h-12 placeholder:text-text-secondary/50 px-2 text-base font-normal leading-normal appearance-none" placeholder="98" type="number"/>
+<div class="text-text-secondary flex border border-l-0 border-border-dark bg-surface-dark items-center justify-center px-4 rounded-r-lg text-sm font-medium">
+                                %
+                            </div>
+</div>
+</label>
+</div>
+</div>
+<div class="h-8"></div>
+</main>
+<!-- Footer / Action Bar -->
+<footer class="fixed bottom-0 left-0 right-0 bg-background-dark/90 backdrop-blur-md border-t border-border-dark p-4 pb-8 z-50">
+<div class="flex gap-4 max-w-md mx-auto w-full">
+<button class="flex-1 h-12 rounded-lg border border-border-dark text-white font-semibold hover:bg-white/5 active:scale-95 transition-all text-sm">
+                    Cancel
+                </button>
+<button class="flex-1 h-12 rounded-lg bg-primary text-white font-bold shadow-lg shadow-primary/30 hover:bg-primary/90 active:scale-95 transition-all text-sm">
+                    Save Data
+                </button>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eCRF Designer</title>
+
+
+<link href="../assets/inter.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<script src="../assets/tailwindcdn.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111a22",
+                        "surface-dark": "#192633",
+                        "surface-dark-highlight": "#233648",
+                        "text-secondary": "#92adc9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen relative overflow-hidden">
+<!-- Mobile Container -->
+<div class="relative flex flex-col h-screen w-full max-w-md mx-auto bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden">
+<!-- Header -->
+<header class="shrink-0 z-10 bg-background-dark/95 backdrop-blur-sm border-b border-white/5 pb-2">
+<div class="flex items-center justify-between p-4">
+<div class="text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-white/10 cursor-pointer">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">eCRF Templates</h2>
+<div class="flex size-10 items-center justify-center">
+<button class="flex items-center justify-center overflow-hidden rounded-full size-10 hover:bg-white/10">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 pb-2">
+<div class="flex w-full items-center rounded-xl bg-surface-dark-highlight border border-white/5 h-12 transition-all focus-within:ring-2 focus-within:ring-primary/50">
+<div class="flex items-center justify-center pl-4 pr-2 text-text-secondary">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-transparent border-none text-white placeholder:text-text-secondary focus:ring-0 text-base font-normal h-full" placeholder="Search templates (e.g., DM, VS)"/>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 px-4 py-2 overflow-x-auto hide-scrollbar">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-4 shadow-lg shadow-primary/20 transition-transform active:scale-95">
+<p class="text-white text-sm font-semibold">All</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark-highlight border border-white/5 px-4 hover:bg-white/5 transition-colors">
+<p class="text-text-secondary text-sm font-medium">Drafts</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark-highlight border border-white/5 px-4 hover:bg-white/5 transition-colors">
+<p class="text-text-secondary text-sm font-medium">Published</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark-highlight border border-white/5 px-4 hover:bg-white/5 transition-colors">
+<p class="text-text-secondary text-sm font-medium">Archived</p>
+</button>
+</div>
+</header>
+<!-- Main Content: Template List -->
+<main class="flex-1 overflow-y-auto p-4 pb-24 space-y-4">
+<!-- Card 1: Draft -->
+<div class="group relative flex flex-col gap-3 rounded-2xl bg-surface-dark p-4 shadow-lg border border-white/5 hover:border-primary/30 transition-all">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="size-12 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-800 flex items-center justify-center shadow-inner" data-alt="Blue gradient icon representing demographics">
+<span class="material-symbols-outlined text-white">badge</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<h3 class="text-white text-base font-bold">Demographics (DM)</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30 uppercase tracking-wide">Draft</span>
+</div>
+<p class="text-text-secondary text-xs font-medium">v1.2 • Edited 2h ago</p>
+</div>
+</div>
+<button class="text-text-secondary hover:text-white p-1 rounded-full hover:bg-white/10">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="h-px bg-white/5 w-full"></div>
+<div class="flex items-center justify-between gap-2">
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full bg-slate-600 border border-surface-dark flex items-center justify-center text-[10px]">JD</div>
+<div class="size-6 rounded-full bg-slate-500 border border-surface-dark flex items-center justify-center text-[10px]">AS</div>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center h-8 w-8 rounded-lg bg-surface-dark-highlight text-text-secondary hover:text-white hover:bg-white/10 transition-colors" title="Duplicate">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="flex items-center justify-center h-8 px-4 rounded-lg bg-primary text-white text-sm font-medium shadow-md shadow-primary/20 active:scale-95 transition-transform gap-1">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+<span>Edit</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Published -->
+<div class="group relative flex flex-col gap-3 rounded-2xl bg-surface-dark p-4 shadow-lg border border-white/5 hover:border-primary/30 transition-all opacity-80 hover:opacity-100">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="size-12 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center shadow-inner" data-alt="Green gradient icon representing vital signs">
+<span class="material-symbols-outlined text-white">ecg_heart</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<h3 class="text-white text-base font-bold">Vital Signs (VS)</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase tracking-wide">Published</span>
+</div>
+<p class="text-text-secondary text-xs font-medium">v2.0 • 1 day ago</p>
+</div>
+</div>
+<button class="text-text-secondary hover:text-white p-1 rounded-full hover:bg-white/10">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="h-px bg-white/5 w-full"></div>
+<div class="flex items-center justify-end gap-2">
+<button class="flex items-center justify-center h-8 w-8 rounded-lg bg-surface-dark-highlight text-text-secondary hover:text-white hover:bg-white/10 transition-colors" title="View">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Archived -->
+<div class="group relative flex flex-col gap-3 rounded-2xl bg-surface-dark p-4 shadow-lg border border-white/5 hover:border-primary/30 transition-all opacity-60">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="size-12 rounded-lg bg-gradient-to-br from-slate-600 to-slate-800 flex items-center justify-center shadow-inner" data-alt="Gray gradient icon representing adverse events">
+<span class="material-symbols-outlined text-white">warning</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<h3 class="text-white text-base font-bold">Adverse Events (AE)</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-500/20 text-slate-400 border border-slate-500/30 uppercase tracking-wide">Archived</span>
+</div>
+<p class="text-text-secondary text-xs font-medium">v1.0 • 2 weeks ago</p>
+</div>
+</div>
+<button class="text-text-secondary hover:text-white p-1 rounded-full hover:bg-white/10">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Draft (Another) -->
+<div class="group relative flex flex-col gap-3 rounded-2xl bg-surface-dark p-4 shadow-lg border border-white/5 hover:border-primary/30 transition-all">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="size-12 rounded-lg bg-gradient-to-br from-purple-600 to-indigo-800 flex items-center justify-center shadow-inner" data-alt="Purple gradient icon representing medical history">
+<span class="material-symbols-outlined text-white">history_edu</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<h3 class="text-white text-base font-bold">Medical History (MH)</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30 uppercase tracking-wide">Draft</span>
+</div>
+<p class="text-text-secondary text-xs font-medium">v0.9 • 3h ago</p>
+</div>
+</div>
+<button class="text-text-secondary hover:text-white p-1 rounded-full hover:bg-white/10">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="h-px bg-white/5 w-full"></div>
+<div class="flex items-center justify-end gap-2">
+<button class="flex items-center justify-center h-8 px-4 rounded-lg bg-primary text-white text-sm font-medium shadow-md shadow-primary/20 active:scale-95 transition-transform gap-1">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+<span>Edit</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<div class="absolute bottom-6 right-6 z-20">
+<button class="flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-xl shadow-primary/30 hover:bg-blue-600 active:scale-90 transition-all">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<!-- Simulated "Bottom Sheet" for Field Editing (Demonstrating Editor Mode) -->
+<!-- This represents the active state when a user is editing a field in a template -->
+<div class="absolute bottom-0 w-full z-30 transform transition-transform duration-300 ease-out">
+<!-- Backdrop Blur Gradient -->
+<div class="h-8 w-full bg-gradient-to-t from-background-dark to-transparent"></div>
+<div class="bg-surface-dark border-t border-white/10 rounded-t-3xl shadow-[0_-8px_30px_rgba(0,0,0,0.5)] p-6 pb-8">
+<!-- Handle -->
+<div class="w-12 h-1 bg-white/10 rounded-full mx-auto mb-6"></div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">text_fields</span>
+</div>
+<div>
+<h3 class="text-white text-lg font-bold">Field Settings</h3>
+<p class="text-text-secondary text-xs">Editing "Subject ID"</p>
+</div>
+</div>
+<button class="text-text-secondary hover:text-white p-2">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Form Controls -->
+<div class="space-y-4">
+<!-- Variable Name -->
+<div class="space-y-1.5">
+<label class="text-text-secondary text-xs font-semibold uppercase tracking-wider">CDISC Variable</label>
+<div class="flex items-center bg-background-dark rounded-xl px-4 py-3 border border-white/5 focus-within:border-primary/50 transition-colors">
+<span class="text-text-secondary mr-2 font-mono text-sm">DM.</span>
+<input class="bg-transparent border-none text-white focus:ring-0 p-0 text-sm font-mono w-full font-bold" type="text" value="SUBJID"/>
+<span class="material-symbols-outlined text-green-500 text-lg" title="Valid CDISC Variable">check_circle</span>
+</div>
+</div>
+<!-- Options Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Data Type -->
+<div class="space-y-1.5">
+<label class="text-text-secondary text-xs font-semibold uppercase tracking-wider">Type</label>
+<button class="flex items-center justify-between w-full bg-surface-dark-highlight rounded-xl px-4 py-3 border border-white/5 text-white text-sm">
+<span>Text (Char)</span>
+<span class="material-symbols-outlined text-text-secondary text-lg">arrow_drop_down</span>
+</button>
+</div>
+<!-- Max Length -->
+<div class="space-y-1.5">
+<label class="text-text-secondary text-xs font-semibold uppercase tracking-wider">Length</label>
+<div class="flex items-center bg-surface-dark-highlight rounded-xl px-4 py-3 border border-white/5">
+<input class="bg-transparent border-none text-white focus:ring-0 p-0 text-sm w-full" type="number" value="20"/>
+</div>
+</div>
+</div>
+<!-- Toggles -->
+<div class="pt-2 flex flex-col gap-3">
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-dark-highlight border border-white/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-secondary">asterisk</span>
+<span class="text-white text-sm font-medium">Required Field</span>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary">
+<span class="translate-x-6 inline-block h-4 w-4 transform rounded-full bg-white transition"></span>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-dark-highlight border border-white/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-secondary">rule</span>
+<span class="text-white text-sm font-medium">Validation Rules</span>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</div>
+</div>
+<!-- Save Button -->
+<button class="w-full mt-4 bg-primary hover:bg-blue-600 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">
+                        Save Changes
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

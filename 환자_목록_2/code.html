@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>환자 목록 - e-CRF</title>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<script src="../assets/tailwindcdn.js"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1a2632",
+              "text-main": "#0d141b",
+              "text-secondary": "#4c739a",
+            },
+            fontFamily: {
+              "display": ["Inter", "Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }html {
+            scroll-behavior: smooth;
+        }.scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white font-display antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<header class="sticky top-0 z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 px-4 py-3 flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="text-xl font-bold leading-tight tracking-tight text-text-main dark:text-white">환자 목록</h2>
+<p class="text-xs text-text-secondary dark:text-gray-400 mt-0.5">총 24명의 환자가 등록됨</p>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Search" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-text-main dark:text-white">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button aria-label="Add Patient" class="flex items-center justify-center w-10 h-10 rounded-full bg-primary hover:bg-blue-600 transition-colors text-white shadow-md shadow-blue-500/30">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</header>
+<div class="px-4 py-3 bg-background-light dark:bg-background-dark">
+<div class="relative flex items-center h-10 w-full rounded-lg bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-200 dark:border-gray-700 focus-within:ring-2 focus-within:ring-primary focus-within:border-transparent transition-all">
+<div class="absolute left-3 text-text-secondary dark:text-gray-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="h-full w-full bg-transparent pl-10 pr-4 rounded-lg text-sm text-text-main dark:text-white placeholder:text-text-secondary dark:placeholder:text-gray-500 focus:outline-none border-none ring-0" placeholder="이름, ID, 생년월일 검색" type="text"/>
+</div>
+</div>
+<div class="px-4 pb-2 flex gap-3 overflow-x-auto scrollbar-hide">
+<div class="flex-none bg-primary/10 dark:bg-primary/20 px-3 py-2 rounded-lg border border-primary/20 min-w-[100px]">
+<p class="text-xs text-primary font-medium">전체 환자</p>
+<p class="text-lg font-bold text-primary">24</p>
+</div>
+<div class="flex-none bg-orange-50 dark:bg-orange-900/20 px-3 py-2 rounded-lg border border-orange-200 dark:border-orange-800 min-w-[100px]">
+<p class="text-xs text-orange-600 dark:text-orange-400 font-medium">Screening</p>
+<p class="text-lg font-bold text-orange-600 dark:text-orange-400">5</p>
+</div>
+<div class="flex-none bg-green-50 dark:bg-green-900/20 px-3 py-2 rounded-lg border border-green-200 dark:border-green-800 min-w-[100px]">
+<p class="text-xs text-green-600 dark:text-green-400 font-medium">Active</p>
+<p class="text-lg font-bold text-green-600 dark:text-green-400">18</p>
+</div>
+<div class="flex-none bg-gray-100 dark:bg-gray-800/40 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 min-w-[100px]">
+<p class="text-xs text-gray-600 dark:text-gray-400 font-medium">Completed</p>
+<p class="text-lg font-bold text-gray-600 dark:text-gray-400">1</p>
+</div>
+</div>
+<main class="flex-1 overflow-y-auto px-4 py-2 pb-24 space-y-3">
+<div class="group relative flex flex-col p-4 rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 dark:hover:border-primary/50 transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3 items-center">
+<div class="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-700 dark:text-blue-300 font-bold text-sm shrink-0">
+                            KS
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-text-main dark:text-white font-bold text-sm">김철수 (Kim Chul-soo)</h3>
+</div>
+<p class="text-text-secondary dark:text-gray-400 text-xs mt-0.5 font-mono">ID: 001-KR-SE</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-md bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 text-[10px] font-semibold border border-green-100 dark:border-green-900/50">Active</span>
+</div>
+<div class="h-px w-full bg-gray-50 dark:bg-gray-800/50 mb-3"></div>
+<div class="flex justify-between items-center">
+<div class="flex flex-col gap-1">
+<span class="text-[11px] text-text-secondary dark:text-gray-500 uppercase tracking-wider">Last Update</span>
+<span class="text-xs font-medium text-text-main dark:text-gray-300">2023.10.27 14:30</span>
+</div>
+<div class="flex items-center text-primary text-xs font-medium group-hover:underline">
+                        상세 정보
+                        <span class="material-symbols-outlined text-[16px] ml-0.5">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col p-4 rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 dark:hover:border-primary/50 transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3 items-center">
+<div class="h-10 w-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-700 dark:text-orange-300 font-bold text-sm shrink-0">
+                            YH
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-text-main dark:text-white font-bold text-sm">이영희 (Lee Young-hee)</h3>
+</div>
+<p class="text-text-secondary dark:text-gray-400 text-xs mt-0.5 font-mono">ID: 002-KR-SE</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-md bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 text-[10px] font-semibold border border-orange-100 dark:border-orange-900/50">Screening</span>
+</div>
+<div class="h-px w-full bg-gray-50 dark:bg-gray-800/50 mb-3"></div>
+<div class="flex justify-between items-center">
+<div class="flex flex-col gap-1">
+<span class="text-[11px] text-text-secondary dark:text-gray-500 uppercase tracking-wider">Last Update</span>
+<span class="text-xs font-medium text-text-main dark:text-gray-300">2023.10.26 09:15</span>
+</div>
+<div class="flex items-center text-primary text-xs font-medium group-hover:underline">
+                        상세 정보
+                        <span class="material-symbols-outlined text-[16px] ml-0.5">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col p-4 rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 dark:hover:border-primary/50 transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3 items-center">
+<div class="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-700 dark:text-blue-300 font-bold text-sm shrink-0">
+                            MS
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-text-main dark:text-white font-bold text-sm">박민수 (Park Min-su)</h3>
+</div>
+<p class="text-text-secondary dark:text-gray-400 text-xs mt-0.5 font-mono">ID: 003-KR-SE</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-md bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 text-[10px] font-semibold border border-green-100 dark:border-green-900/50">Active</span>
+</div>
+<div class="h-px w-full bg-gray-50 dark:bg-gray-800/50 mb-3"></div>
+<div class="flex justify-between items-center">
+<div class="flex flex-col gap-1">
+<span class="text-[11px] text-text-secondary dark:text-gray-500 uppercase tracking-wider">Last Update</span>
+<span class="text-xs font-medium text-text-main dark:text-gray-300">2023.10.25 16:45</span>
+</div>
+<div class="flex items-center text-primary text-xs font-medium group-hover:underline">
+                        상세 정보
+                        <span class="material-symbols-outlined text-[16px] ml-0.5">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col p-4 rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 dark:hover:border-primary/50 transition-colors cursor-pointer opacity-70">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3 items-center">
+<div class="h-10 w-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 font-bold text-sm shrink-0">
+                            JH
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-text-main dark:text-white font-bold text-sm">정지훈 (Jung Ji-hoon)</h3>
+</div>
+<p class="text-text-secondary dark:text-gray-400 text-xs mt-0.5 font-mono">ID: 004-KR-SE</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-[10px] font-semibold border border-gray-200 dark:border-gray-700">Drop-out</span>
+</div>
+<div class="h-px w-full bg-gray-50 dark:bg-gray-800/50 mb-3"></div>
+<div class="flex justify-between items-center">
+<div class="flex flex-col gap-1">
+<span class="text-[11px] text-text-secondary dark:text-gray-500 uppercase tracking-wider">Last Update</span>
+<span class="text-xs font-medium text-text-main dark:text-gray-300">2023.09.15 11:20</span>
+</div>
+<div class="flex items-center text-primary text-xs font-medium group-hover:underline">
+                        상세 정보
+                        <span class="material-symbols-outlined text-[16px] ml-0.5">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="group relative flex flex-col p-4 rounded-xl bg-surface-light dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 dark:hover:border-primary/50 transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3 items-center">
+<div class="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-700 dark:text-blue-300 font-bold text-sm shrink-0">
+                            SJ
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-text-main dark:text-white font-bold text-sm">서지원 (Seo Ji-won)</h3>
+</div>
+<p class="text-text-secondary dark:text-gray-400 text-xs mt-0.5 font-mono">ID: 005-KR-SE</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded-md bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 text-[10px] font-semibold border border-green-100 dark:border-green-900/50">Active</span>
+</div>
+<div class="h-px w-full bg-gray-50 dark:bg-gray-800/50 mb-3"></div>
+<div class="flex justify-between items-center">
+<div class="flex flex-col gap-1">
+<span class="text-[11px] text-text-secondary dark:text-gray-500 uppercase tracking-wider">Last Update</span>
+<span class="text-xs font-medium text-text-main dark:text-gray-300">2023.10.28 10:10</span>
+</div>
+<div class="flex items-center text-primary text-xs font-medium group-hover:underline">
+                        상세 정보
+                        <span class="material-symbols-outlined text-[16px] ml-0.5">arrow_forward</span>
+</div>
+</div>
+</div>
+<div class="h-6"></div> 
+</main>
+<nav class="fixed bottom-0 z-40 w-full max-w-md bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 pb-safe">
+<div class="flex justify-around items-center h-16">
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1 text-primary">
+<span class="material-symbols-outlined filled">group</span>
+<span class="text-[10px] font-medium">환자 목록</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1 text-text-secondary dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-medium">e-CRF</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1 text-text-secondary dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-[10px] font-medium">쿼리</span>
+</button>
+<button class="flex flex-col items-center justify-center w-full h-full space-y-1 text-text-secondary dark:text-gray-500 hover:text-primary dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">내 정보</span>
+</button>
+</div>
+</nav>
+</div>
+</body></html>

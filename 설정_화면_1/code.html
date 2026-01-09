@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>e-CRF Settings</title>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<script src="../assets/tailwindcdn.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f2f2f7", // iOS grouped background style
+                        "background-dark": "#000000",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1c1c1e",
+                        "separator-light": "#e5e5ea",
+                        "separator-dark": "#38383a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased min-h-screen pb-24">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-separator-light/50 dark:border-separator-dark/50">
+<div class="flex items-center justify-between px-4 py-3 h-[52px]">
+<div class="w-10">
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight text-center">설정</h2>
+<div class="w-10"></div>
+</div>
+</header>
+<main class="w-full max-w-md mx-auto px-4 pt-6 flex flex-col gap-6">
+<section>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm overflow-hidden active:bg-gray-50 dark:active:bg-gray-800 transition-colors cursor-pointer">
+<div class="flex items-center gap-4 p-4">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-16 w-16 border border-gray-100 dark:border-gray-700 shadow-inner" data-alt="Portrait of a medical professional" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_MhplWJwL3uYccQdIXPE3Tngf_Qb2gLmErDU1FbGD3VZRzmi1iabZKocGBCGXf9-7bOEGgEsLauycVnHgHpAVQmDd3GeT1DMuJaEzvJ73eA2ZplgyltZbeJUQBz4fVjo3IKV6biou2bg8NQsje_Uss1G5KyrbNouuy3Z2nDzSmZQb-T1_4zch0_ZO-s0VJvCiagvU_FEP1lKRvBTX_g6JrHLwIUqwcG37HvK7fjpg_movPil0xV-GKHsFuiPIlSZduCPSz9M_itI");'>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-white rounded-full p-1 border-2 border-surface-light dark:border-surface-dark flex items-center justify-center w-6 h-6">
+<span class="material-symbols-outlined text-[14px] leading-none">edit</span>
+</div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<h3 class="text-lg font-semibold leading-tight truncate">Dr. Kim</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium mt-0.5 truncate">Principal Investigator</p>
+<p class="text-slate-400 dark:text-slate-500 text-xs truncate">Seoul National Univ. Hospital</p>
+</div>
+<div class="shrink-0 text-slate-300 dark:text-slate-500">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-2 pl-3">알림 설정</h3>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="flex items-center justify-between px-4 py-3 min-h-[56px] border-b border-separator-light dark:border-separator-dark last:border-0">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="bg-primary/10 p-1.5 rounded-md text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</div>
+<p class="text-base font-medium truncate">Push 알림</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-600 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors">
+<input checked="" class="peer invisible absolute" type="checkbox"/>
+<div class="h-[27px] w-[27px] rounded-full bg-white shadow-sm transition-all peer-checked:bg-white"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between px-4 py-3 min-h-[56px] border-b border-separator-light dark:border-separator-dark last:border-0">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="bg-primary/10 p-1.5 rounded-md text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">edit_document</span>
+</div>
+<p class="text-base font-medium truncate">e-CRF 업데이트</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-600 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors">
+<input checked="" class="peer invisible absolute" type="checkbox"/>
+<div class="h-[27px] w-[27px] rounded-full bg-white shadow-sm transition-all peer-checked:bg-white"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between px-4 py-3 min-h-[56px] last:border-0">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="bg-red-500/10 dark:bg-red-400/20 p-1.5 rounded-md text-red-600 dark:text-red-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<p class="text-base font-medium truncate">쿼리(Query) 알림</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-600 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors">
+<input class="peer invisible absolute" type="checkbox"/>
+<div class="h-[27px] w-[27px] rounded-full bg-white shadow-sm transition-all peer-checked:bg-white"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-2 pl-3">개인 정보 보호 및 보안</h3>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="flex items-center justify-between px-4 py-3 min-h-[56px] border-b border-separator-light dark:border-separator-dark">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-1.5 rounded-md text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">face</span>
+</div>
+<p class="text-base font-medium">Face ID 로그인</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-600 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors">
+<input checked="" class="peer invisible absolute" type="checkbox"/>
+<div class="h-[27px] w-[27px] rounded-full bg-white shadow-sm transition-all peer-checked:bg-white"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between px-4 py-3 min-h-[56px] border-b border-separator-light dark:border-separator-dark active:bg-gray-50 dark:active:bg-gray-800 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-1.5 rounded-md text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</div>
+<p class="text-base font-medium">데이터 공유 설정</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm">허용 안함</span>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-500 text-[20px]">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center justify-between px-4 py-3 min-h-[56px] active:bg-gray-50 dark:active:bg-gray-800 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-1.5 rounded-md text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<p class="text-base font-medium">비밀번호 변경</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-500 text-[20px]">chevron_right</span>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-2 pl-3">앱 설정</h3>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="flex items-center justify-between px-4 py-3 min-h-[56px] border-b border-separator-light dark:border-separator-dark active:bg-gray-50 dark:active:bg-gray-800 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-1.5 rounded-md text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">language</span>
+</div>
+<p class="text-base font-medium">언어</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm">한국어</span>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-500 text-[20px]">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center justify-between px-4 py-3 min-h-[56px] border-b border-separator-light dark:border-separator-dark active:bg-gray-50 dark:active:bg-gray-800 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-1.5 rounded-md text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">dark_mode</span>
+</div>
+<p class="text-base font-medium">테마</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm">시스템 설정</span>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-500 text-[20px]">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center justify-between px-4 py-3 min-h-[56px] active:bg-gray-50 dark:active:bg-gray-800 transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-1.5 rounded-md text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">api</span>
+</div>
+<p class="text-base font-medium">CDISC 표준</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm">SDTM v1.4</span>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-500 text-[20px]">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<section>
+<button class="w-full bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 rounded-xl shadow-sm py-3.5 text-center active:bg-red-100 dark:active:bg-red-900/30 transition-colors">
+<span class="text-red-600 dark:text-red-400 text-base font-semibold">로그아웃</span>
+</button>
+<div class="flex justify-center mt-6 mb-4">
+<p class="text-xs text-slate-400 dark:text-slate-600">Version 1.0.2 (Build 20231024)</p>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur-lg border-t border-separator-light dark:border-separator-dark z-50 pb-safe">
+<div class="flex justify-around items-center h-[60px] max-w-md mx-auto px-2">
+<a class="flex flex-col items-center justify-center w-full h-full gap-1 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">home</span>
+<span class="text-[10px] font-medium">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full gap-1 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">person</span>
+<span class="text-[10px] font-medium">환자</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full gap-1 text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary transition-colors group" href="#">
+<div class="relative">
+<span class="material-symbols-outlined text-[26px] group-hover:scale-110 transition-transform">chat_bubble</span>
+<span class="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-red-500 ring-2 ring-white dark:ring-surface-dark"></span>
+</div>
+<span class="text-[10px] font-medium">쿼리</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full gap-1 text-primary dark:text-primary group" href="#">
+<span class="material-symbols-outlined text-[26px] fill-current">settings</span>
+<span class="text-[10px] font-medium">설정</span>
+</a>
+</div>
+<div class="h-[20px] w-full bg-transparent"></div>
+</nav>
+
+</body></html>

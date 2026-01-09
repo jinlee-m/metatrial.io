@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>e-CRF Connect Splash Screen</title>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<link href="../assets/inter.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<script src="../assets/tailwindcdn.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f66bd",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen w-full flex flex-col items-center justify-between font-display overflow-hidden relative selection:bg-primary selection:text-white">
+<!-- Background Gradient Decoration (Subtle depth) -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+<!-- Top center glow -->
+<div class="absolute top-[20%] left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/20 rounded-full blur-[100px] opacity-40"></div>
+<!-- Bottom left glow -->
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] opacity-30"></div>
+</div>
+<!-- Main Content Area (Vertically Centered) -->
+<div class="flex-grow flex flex-col items-center justify-center w-full z-10 px-4 pb-20">
+<!-- Logo Section -->
+<div class="relative flex flex-col items-center gap-8">
+<!-- Logo Wrapper with Glow Effect -->
+<div class="relative group">
+<!-- Outer glow ring -->
+<div class="absolute inset-0 bg-primary/30 blur-2xl rounded-full scale-110"></div>
+<!-- Logo Container -->
+<div class="relative w-32 h-32 rounded-3xl bg-[#1A232C] border border-white/10 shadow-2xl flex items-center justify-center overflow-hidden ring-1 ring-white/5">
+<!-- Icon Placeholder representing e-CRF/Data -->
+<div class="w-full h-full bg-center bg-no-repeat bg-[length:60%]" data-alt="Abstract clinical data shield logo icon in primary blue" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAaiIaqi1GEHQ-BdaVH4R24QQlUI0MW5c2N-qcXVLan1mdW1AfVOIG9JElL7-F0fDOWaqFAq4WlixrDurDf4wT37SG_MjZBVGrV41kI6HgqfhdmTTm_wytuLqlbSkdrZpWdUHU5aRfGSdpPqskpRdKZdVhOXWyJisiEEF5Jq0l_rtvWk_W7afWBhz72JY98pkiB8HLepXSqGUAFMjJZzEEPj7L6F-GdqH5ICFBNPAdJW4b0Ji4iO3judYc_qbWtZ3c4h3xkENqLIs8");'></div>
+</div>
+</div>
+<!-- Typography -->
+<div class="flex flex-col items-center text-center gap-3">
+<!-- App Title -->
+<h1 class="text-white text-3xl md:text-4xl font-bold tracking-tight leading-tight">
+                    e-CRF Connect
+                </h1>
+<!-- Slogan/Subtitle -->
+<p class="text-gray-400 text-base font-normal tracking-wide leading-relaxed">
+                    Standardized Clinical Data
+                </p>
+</div>
+</div>
+</div>
+<!-- Footer / Bottom Section -->
+<div class="flex flex-col items-center w-full z-10 pb-12 gap-8 px-6">
+<!-- Loading Indicator (Static Representation) -->
+<div class="w-full max-w-[160px] h-1 bg-gray-800/50 rounded-full overflow-hidden backdrop-blur-sm">
+<!-- Progress bar fill -->
+<div class="h-full bg-primary w-[40%] rounded-full shadow-[0_0_10px_rgba(15,102,189,0.5)]"></div>
+</div>
+<!-- Meta Information -->
+<div class="flex flex-col items-center gap-3">
+<!-- Powered By Badge -->
+<div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/5 backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary text-lg">api</span>
+<span class="text-[#92adc9] text-sm font-medium tracking-wide">Powered by CDISC API</span>
+</div>
+<!-- Version Number -->
+<p class="text-gray-600 text-xs font-normal font-mono opacity-60">v1.0.2</p>
+</div>
+</div>
+</body></html>

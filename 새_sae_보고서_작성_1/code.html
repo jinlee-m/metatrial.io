@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New SAE Report</title>
+<script src="../assets/tailwindcdn.js"></script>
+<link href="../assets/inter.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<link href="../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-50 antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm px-4 py-3 border-b border-slate-200 dark:border-slate-800">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-white text-2xl">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white flex-1 text-center truncate px-2">
+                새 SAE 보고서 작성
+            </h1>
+<button class="flex h-10 items-center justify-center px-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 transition-colors">
+<span class="text-base font-medium">취소</span>
+</button>
+</header>
+<!-- Progress Indicator -->
+<div class="w-full px-6 py-4 bg-background-light dark:bg-background-dark">
+<div class="flex items-center justify-between gap-2">
+<div class="flex flex-col gap-1 w-full">
+<div class="flex justify-between text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">
+<span>진행률</span>
+<span>25%</span>
+</div>
+<div class="h-2 w-full rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<div class="h-full w-1/4 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 1: Event Details -->
+<section class="flex flex-col gap-4 px-4 py-2">
+<div class="flex items-center gap-2 pb-2 pt-4">
+<span class="flex items-center justify-center size-6 rounded-full bg-primary/10 text-primary text-xs font-bold">1</span>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">기본 정보 (Event Details)</h2>
+</div>
+<div class="rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm border border-slate-100 dark:border-slate-700">
+<!-- Event Term -->
+<div class="flex flex-col gap-2 mb-5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                        이상 사례명 (Event Term) <span class="text-red-500">*</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 px-4 py-3.5 pr-10 text-base text-slate-900 dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all">
+<option disabled="" selected="" value="">CDISC 용어 선택 (Select Term)</option>
+<option value="headache">Headache (두통)</option>
+<option value="nausea">Nausea (구역)</option>
+<option value="dizziness">Dizziness (어지러움)</option>
+<option value="rash">Rash (발진)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">MedDRA 용어를 기준으로 선택해 주세요.</p>
+</div>
+<!-- Dates Row -->
+<div class="flex flex-col sm:flex-row gap-4">
+<div class="flex flex-1 flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                            발생 일자 (Start Date) <span class="text-red-500">*</span>
+</label>
+<div class="relative">
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 px-4 py-3.5 text-base text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all" type="date"/>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                            종료 일자 (End Date)
+                        </label>
+<div class="relative">
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 px-4 py-3.5 text-base text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all" type="date"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Assessment -->
+<section class="flex flex-col gap-4 px-4 py-2">
+<div class="flex items-center gap-2 pb-2 pt-4">
+<span class="flex items-center justify-center size-6 rounded-full bg-primary/10 text-primary text-xs font-bold">2</span>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">심각도 및 평가 (Assessment)</h2>
+</div>
+<div class="rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm border border-slate-100 dark:border-slate-700">
+<!-- Severity Segmented Control -->
+<div class="flex flex-col gap-3 mb-6">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                        심각도 (Severity) <span class="text-red-500">*</span>
+</label>
+<div class="grid grid-cols-3 gap-2 p-1 bg-slate-100 dark:bg-slate-900 rounded-lg">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="severity" type="radio" value="mild"/>
+<div class="flex items-center justify-center rounded-md py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-all peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-primary peer-checked:shadow-sm">
+                                경증
+                            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="severity" type="radio" value="moderate"/>
+<div class="flex items-center justify-center rounded-md py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-all peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-amber-600 peer-checked:shadow-sm">
+                                중등증
+                            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="severity" type="radio" value="severe"/>
+<div class="flex items-center justify-center rounded-md py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-all peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-red-600 peer-checked:shadow-sm">
+                                중증
+                            </div>
+</label>
+</div>
+</div>
+<!-- Seriousness Criteria -->
+<div class="flex flex-col gap-3">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                        심각성 기준 (Seriousness Criteria)
+                    </label>
+<div class="space-y-3">
+<label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer">
+<input class="mt-0.5 size-4 rounded border-slate-300 text-primary focus:ring-primary bg-slate-50 dark:bg-slate-800 dark:border-slate-600 dark:checked:bg-primary" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">입원 또는 입원 기간의 연장</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Hospitalization or Prolongation</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer">
+<input class="mt-0.5 size-4 rounded border-slate-300 text-primary focus:ring-primary bg-slate-50 dark:bg-slate-800 dark:border-slate-600 dark:checked:bg-primary" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">생명을 위협함</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Life-threatening</span>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors cursor-pointer">
+<input class="mt-0.5 size-4 rounded border-slate-300 text-primary focus:ring-primary bg-slate-50 dark:bg-slate-800 dark:border-slate-600 dark:checked:bg-primary" type="checkbox"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">중대한 불구 또는 기능 저하</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Disability or Incapacity</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Causality -->
+<section class="flex flex-col gap-4 px-4 py-2">
+<div class="flex items-center gap-2 pb-2 pt-4">
+<span class="flex items-center justify-center size-6 rounded-full bg-primary/10 text-primary text-xs font-bold">3</span>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">연관성 (Causality)</h2>
+</div>
+<div class="rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex flex-col gap-2 mb-5">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                        관련 의약품 (Suspect Drug)
+                    </label>
+<div class="relative group">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">medication</span>
+</div>
+<input class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 pl-11 pr-4 py-3.5 text-base text-slate-900 dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all" placeholder="약품명 검색 (Search Drug)" type="text"/>
+<div class="absolute inset-y-0 right-0 flex items-center px-3">
+<button class="flex items-center justify-center rounded-md p-1 text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                        인과관계 평가 (Causality Assessment)
+                    </label>
+<div class="flex flex-col gap-2">
+<label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 has-[:checked]:border-primary has-[:checked]:bg-primary/5 dark:has-[:checked]:bg-primary/10 transition-all cursor-pointer">
+<input class="size-4 border-slate-300 text-primary focus:ring-primary dark:border-slate-600 bg-transparent" name="causality" type="radio"/>
+<span class="text-sm font-medium text-slate-900 dark:text-white">관련성 있음 (Related)</span>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 has-[:checked]:border-slate-400 has-[:checked]:bg-slate-50 dark:has-[:checked]:bg-slate-800 transition-all cursor-pointer">
+<input class="size-4 border-slate-300 text-slate-500 focus:ring-slate-500 dark:border-slate-600 bg-transparent" name="causality" type="radio"/>
+<span class="text-sm font-medium text-slate-900 dark:text-white">관련성 없음 (Not Related)</span>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Outcome & Narrative -->
+<section class="flex flex-col gap-4 px-4 py-2 mb-8">
+<div class="flex items-center gap-2 pb-2 pt-4">
+<span class="flex items-center justify-center size-6 rounded-full bg-primary/10 text-primary text-xs font-bold">4</span>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">조치 및 결과 (Action &amp; Outcome)</h2>
+</div>
+<div class="rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                            취해진 조치 (Action Taken)
+                        </label>
+<div class="relative">
+<select class="w-full appearance-none rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 px-4 py-3.5 pr-10 text-base text-slate-900 dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all">
+<option value="">선택 (Select)</option>
+<option value="none">조치 없음 (None)</option>
+<option value="reduced">용량 감량 (Dose Reduced)</option>
+<option value="withdrawn">투여 중단 (Drug Withdrawn)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                            최종 결과 (Outcome)
+                        </label>
+<div class="relative">
+<select class="w-full appearance-none rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 px-4 py-3.5 pr-10 text-base text-slate-900 dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all">
+<option value="">선택 (Select)</option>
+<option value="recovered">회복됨 (Recovered)</option>
+<option value="recovering">회복 중 (Recovering)</option>
+<option value="fatal">사망 (Fatal)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex justify-between">
+<span>상세 기술 (Narrative)</span>
+<span class="text-xs font-normal text-slate-500 dark:text-slate-400">0/2000</span>
+</label>
+<textarea class="w-full min-h-[120px] rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 px-4 py-3 text-base text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all resize-none" placeholder="이상 사례에 대한 상세 내용을 기술해 주세요..."></textarea>
+</div>
+</div>
+</section>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 py-4 safe-area-bottom">
+<div class="flex w-full gap-3 max-w-3xl mx-auto">
+<button class="flex flex-1 items-center justify-center rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 py-3.5 text-sm font-bold text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                    임시 저장 (Draft)
+                </button>
+<button class="flex flex-[2] items-center justify-center rounded-lg bg-primary py-3.5 text-sm font-bold text-white shadow-md hover:bg-primary/90 transition-colors">
+                    제출 (Submit)
+                </button>
+</div>
+</div>
+</div>
+</body></html>

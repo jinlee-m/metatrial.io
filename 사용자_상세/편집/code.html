@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Details</title>
+
+
+<link href="../../assets/inter.css" rel="stylesheet"/>
+<link href="../../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<link href="../../assets/material-symbols-outlined.css" rel="stylesheet"/>
+<script src="../../assets/tailwindcdn.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1e2832", 
+                        "border-dark": "#2d3b48",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3b48;
+            border-radius: 3px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-border-dark px-4 py-3 flex items-center justify-between">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-gray-200 dark:hover:bg-surface-dark transition-colors text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight">User Details</h1>
+<button class="text-primary font-semibold text-sm px-2">Edit</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-lg mx-auto pb-32">
+<!-- Profile Header -->
+<div class="flex flex-col items-center pt-8 pb-6 px-4">
+<div class="relative group cursor-pointer">
+<div class="size-28 rounded-full bg-surface-dark shadow-xl overflow-hidden border-4 border-surface-dark bg-cover bg-center relative" data-alt="Professional headshot of a doctor in a white coat" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6uhAhxOwlU_Hw2FS9OWNVUWCn6NBMN3VU5cU3HN_73rEwlcPdEZZay6YlTVkBvESPom4yKzuRC4b_bUqiS8ka7DKeCaooPGyWd7YJ7w5orKfrD82LLHU80mwDbKGZF-oWcSVZpeYSBgLd_UjXYZu2nsKEoBxmWWeER2gwTN2ksAqwodL0yb4QIUReL7rhylX3BfNvtR_-BkltpamwMXJQTuajttp-YGB-NI72uX6jIwas9Gg2hD2wq8O_4DYsoCWT9oUrZ_C-utI');">
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-white p-1.5 rounded-full border-4 border-background-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</div>
+</div>
+<h2 class="mt-4 text-2xl font-bold text-slate-900 dark:text-white">Dr. Kim Min-su</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Principal Investigator</p>
+</div>
+<div class="w-full h-px bg-gray-200 dark:bg-border-dark my-2"></div>
+<!-- Form Section -->
+<div class="flex flex-col gap-6 p-4">
+<!-- Section Title -->
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-primary">badge</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Account Information</h3>
+</div>
+<!-- Email Field (Read Only) -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Email Address</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-slate-400">mail</span>
+<input class="w-full h-12 rounded-lg pl-12 pr-4 bg-gray-100 dark:bg-surface-dark border-transparent focus:border-primary focus:ring-0 text-slate-500 dark:text-slate-400 font-medium cursor-not-allowed opacity-80" readonly="" type="email" value="minsu.kim@hospital.com"/>
+<span class="absolute right-4 text-xs font-bold text-slate-400 bg-gray-200 dark:bg-border-dark px-2 py-0.5 rounded">LOCKED</span>
+</div>
+</div>
+<!-- Role Selection -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Role</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">security</span>
+<select class="w-full h-14 rounded-lg pl-12 pr-10 bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 dark:text-white appearance-none cursor-pointer">
+<option selected="" value="Investigator">Investigator</option>
+<option value="Coordinator">Coordinator</option>
+<option value="Administrator">Administrator</option>
+<option value="Monitor">Monitor</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-500 px-1">Changes to role will update access permissions immediately.</p>
+</div>
+<!-- Status Selection -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Status</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-green-500">check_circle</span>
+<select class="w-full h-14 rounded-lg pl-12 pr-10 bg-white dark:bg-surface-dark border border-gray-200 dark:border-border-dark focus:border-primary focus:ring-1 focus:ring-primary text-slate-900 dark:text-white appearance-none cursor-pointer">
+<option selected="" value="Active">Active</option>
+<option value="Inactive">Inactive</option>
+<option value="Suspended">Suspended</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="w-full h-px bg-gray-200 dark:bg-border-dark my-2"></div>
+<!-- Meta Data (Read Only) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Created Date</label>
+<div class="w-full h-12 rounded-lg px-4 bg-gray-50 dark:bg-surface-dark/50 border border-transparent text-slate-500 dark:text-slate-400 flex items-center text-sm font-mono">
+                        2023-10-15
+                    </div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Last Login</label>
+<div class="w-full h-12 rounded-lg px-4 bg-gray-50 dark:bg-surface-dark/50 border border-transparent text-slate-500 dark:text-slate-400 flex items-center text-sm font-mono truncate">
+                        2023-11-20
+                    </div>
+</div>
+</div>
+<!-- Delete User Area -->
+<div class="mt-4 pt-4">
+<button class="flex items-center gap-2 w-full p-4 rounded-lg border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 transition-colors group">
+<div class="bg-red-500/20 p-2 rounded-full group-hover:bg-red-500/30 transition-colors">
+<span class="material-symbols-outlined text-red-500 text-[20px]">delete</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="text-red-500 font-bold text-sm">Delete User</span>
+<span class="text-red-400/70 text-xs text-left">Permanently remove this user and their access.</span>
+</div>
+</button>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-border-dark p-4 pb-8 z-40">
+<div class="flex w-full gap-3 max-w-lg mx-auto">
+<button class="flex-1 h-12 rounded-xl border border-gray-300 dark:border-border-dark text-slate-700 dark:text-white font-semibold hover:bg-gray-100 dark:hover:bg-surface-dark transition-colors">
+                Cancel
+            </button>
+<button class="flex-[2] h-12 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/25 hover:bg-blue-600 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">save</span>
+                Save Changes
+            </button>
+</div>
+</div>
+</body></html>
