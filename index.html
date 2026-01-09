@@ -19,29 +19,20 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
       background: var(--bg); color: var(--text);
     }
-    header { max-width: 1200px; margin: 0 auto 28px; }
+    header { max-width: 1100px; margin: 0 auto 24px; }
     h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: -0.02em; }
     p { margin: 0; color: var(--muted); }
-    .section { max-width: 1200px; margin: 24px auto; }
-    .section h2 { font-size: 18px; margin: 0 0 12px; }
-    .grid {
-      display: grid; gap: 16px;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-    .card {
-      display: flex; flex-direction: column; gap: 10px;
+    .section { max-width: 1100px; margin: 20px auto; }
+    .section h2 { font-size: 16px; margin: 0 0 10px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .list { display: grid; gap: 8px; }
+    .item {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 10px 14px; border-radius: 10px; text-decoration: none; color: inherit;
       background: var(--panel); border: 1px solid var(--border);
-      border-radius: 12px; padding: 12px; text-decoration: none; color: inherit;
-      transition: transform 120ms ease, border-color 120ms ease;
+      transition: border-color 120ms ease, transform 120ms ease;
     }
-    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .thumb {
-      width: 100%; aspect-ratio: 9 / 19; border-radius: 8px; overflow: hidden;
-      background: #0b0e12; border: 1px solid #1f2430;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .label { font-size: 14px; line-height: 1.3; }
+    .item:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .title { font-size: 14px; font-weight: 600; }
     .path { font-size: 12px; color: var(--muted); }
     .note { color: var(--muted); font-size: 12px; margin-top: 10px; }
   </style>
@@ -49,571 +40,337 @@
 <body>
   <header>
     <h1>metaTrial_io 화면 목록</h1>
-    <p>각 카드에서 화면 미리보기 또는 상세 `code.html`로 이동합니다.</p>
+    <p>목록에서 화면을 선택하면 해당 `code.html`로 이동합니다.</p>
   </header>
   <section class="section">
     <h2>환자/케이스</h2>
-    <div class="grid">
-      <a class="card" href="환자_상세_허브/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <span class="path">No preview</span>
-        </div>
-        <div class="label">환자_상세_허브</div>
-        <div class="path">환자_상세_허브</div>
+    <div class="list">
+      <a class="item" href="환자_상세_허브/code.html" target="_blank" rel="noopener">
+        <span class="title">환자_상세_허브</span>
+        <span class="path">환자_상세_허브</span>
       </a>
     </div>
   </section>
   <section class="section">
     <h2>eCRF 입력 플로우</h2>
-    <div class="grid">
-      <a class="card" href="제출_실패/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <span class="path">No preview</span>
-        </div>
-        <div class="label">제출_실패</div>
-        <div class="path">제출_실패</div>
+    <div class="list">
+      <a class="item" href="제출_실패/code.html" target="_blank" rel="noopener">
+        <span class="title">제출_실패</span>
+        <span class="path">제출_실패</span>
       </a>
-      <a class="card" href="제출_완료/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <span class="path">No preview</span>
-        </div>
-        <div class="label">제출_완료</div>
-        <div class="path">제출_완료</div>
+      <a class="item" href="제출_완료/code.html" target="_blank" rel="noopener">
+        <span class="title">제출_완료</span>
+        <span class="path">제출_완료</span>
       </a>
     </div>
   </section>
   <section class="section">
     <h2>상태/오류</h2>
-    <div class="grid">
-      <a class="card" href="빈_상태/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <span class="path">No preview</span>
-        </div>
-        <div class="label">빈_상태</div>
-        <div class="path">빈_상태</div>
+    <div class="list">
+      <a class="item" href="빈_상태/code.html" target="_blank" rel="noopener">
+        <span class="title">빈_상태</span>
+        <span class="path">빈_상태</span>
       </a>
-      <a class="card" href="에러_상태/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <span class="path">No preview</span>
-        </div>
-        <div class="label">에러_상태</div>
-        <div class="path">에러_상태</div>
+      <a class="item" href="에러_상태/code.html" target="_blank" rel="noopener">
+        <span class="title">에러_상태</span>
+        <span class="path">에러_상태</span>
       </a>
     </div>
   </section>
   <section class="section">
     <h2>기타</h2>
-    <div class="grid">
-      <a class="card" href="ecrf_데이터_입력_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_데이터_입력_1/screen.png" alt="ecrf_데이터_입력_1" />
-        </div>
-        <div class="label">ecrf_데이터_입력_1</div>
-        <div class="path">ecrf_데이터_입력_1</div>
-      </a>
-      <a class="card" href="ecrf_데이터_입력_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_데이터_입력_2/screen.png" alt="ecrf_데이터_입력_2" />
-        </div>
-        <div class="label">ecrf_데이터_입력_2</div>
-        <div class="path">ecrf_데이터_입력_2</div>
-      </a>
-      <a class="card" href="ecrf_데이터_입력_3/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_데이터_입력_3/screen.png" alt="ecrf_데이터_입력_3" />
-        </div>
-        <div class="label">ecrf_데이터_입력_3</div>
-        <div class="path">ecrf_데이터_입력_3</div>
-      </a>
-      <a class="card" href="ecrf_데이터_입력_4/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_데이터_입력_4/screen.png" alt="ecrf_데이터_입력_4" />
-        </div>
-        <div class="label">ecrf_데이터_입력_4</div>
-        <div class="path">ecrf_데이터_입력_4</div>
-      </a>
-      <a class="card" href="ecrf_데이터_입력_5/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_데이터_입력_5/screen.png" alt="ecrf_데이터_입력_5" />
-        </div>
-        <div class="label">ecrf_데이터_입력_5</div>
-        <div class="path">ecrf_데이터_입력_5</div>
-      </a>
-      <a class="card" href="ecrf_데이터_입력_6/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_데이터_입력_6/screen.png" alt="ecrf_데이터_입력_6" />
-        </div>
-        <div class="label">ecrf_데이터_입력_6</div>
-        <div class="path">ecrf_데이터_입력_6</div>
-      </a>
-      <a class="card" href="ecrf_데이터_입력_7/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_데이터_입력_7/screen.png" alt="ecrf_데이터_입력_7" />
-        </div>
-        <div class="label">ecrf_데이터_입력_7</div>
-        <div class="path">ecrf_데이터_입력_7</div>
-      </a>
-      <a class="card" href="ecrf_데이터_입력_8/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_데이터_입력_8/screen.png" alt="ecrf_데이터_입력_8" />
-        </div>
-        <div class="label">ecrf_데이터_입력_8</div>
-        <div class="path">ecrf_데이터_입력_8</div>
-      </a>
-      <a class="card" href="ecrf_디자인_및_관리_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_디자인_및_관리_1/screen.png" alt="ecrf_디자인_및_관리_1" />
-        </div>
-        <div class="label">ecrf_디자인_및_관리_1</div>
-        <div class="path">ecrf_디자인_및_관리_1</div>
-      </a>
-      <a class="card" href="ecrf_디자인_및_관리_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_디자인_및_관리_2/screen.png" alt="ecrf_디자인_및_관리_2" />
-        </div>
-        <div class="label">ecrf_디자인_및_관리_2</div>
-        <div class="path">ecrf_디자인_및_관리_2</div>
-      </a>
-      <a class="card" href="ecrf_템플릿_미리보기/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="ecrf_템플릿_미리보기/screen.png" alt="ecrf_템플릿_미리보기" />
-        </div>
-        <div class="label">ecrf_템플릿_미리보기</div>
-        <div class="path">ecrf_템플릿_미리보기</div>
-      </a>
-      <a class="card" href="sae_보고서_목록_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="sae_보고서_목록_1/screen.png" alt="sae_보고서_목록_1" />
-        </div>
-        <div class="label">sae_보고서_목록_1</div>
-        <div class="path">sae_보고서_목록_1</div>
-      </a>
-      <a class="card" href="sae_보고서_목록_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="sae_보고서_목록_2/screen.png" alt="sae_보고서_목록_2" />
-        </div>
-        <div class="label">sae_보고서_목록_2</div>
-        <div class="path">sae_보고서_목록_2</div>
-      </a>
-      <a class="card" href="sae_보고서_목록_3/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="sae_보고서_목록_3/screen.png" alt="sae_보고서_목록_3" />
-        </div>
-        <div class="label">sae_보고서_목록_3</div>
-        <div class="path">sae_보고서_목록_3</div>
-      </a>
-      <a class="card" href="sae_상세_보기_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="sae_상세_보기_1/screen.png" alt="sae_상세_보기_1" />
-        </div>
-        <div class="label">sae_상세_보기_1</div>
-        <div class="path">sae_상세_보기_1</div>
-      </a>
-      <a class="card" href="sae_상세_보기_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="sae_상세_보기_2/screen.png" alt="sae_상세_보기_2" />
-        </div>
-        <div class="label">sae_상세_보기_2</div>
-        <div class="path">sae_상세_보기_2</div>
-      </a>
-      <a class="card" href="sae_상세_보기_3/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="sae_상세_보기_3/screen.png" alt="sae_상세_보기_3" />
-        </div>
-        <div class="label">sae_상세_보기_3</div>
-        <div class="path">sae_상세_보기_3</div>
-      </a>
-      <a class="card" href="데이터_검토/확인_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="데이터_검토/확인_1/screen.png" alt="데이터_검토/확인_1" />
-        </div>
-        <div class="label">확인_1</div>
-        <div class="path">데이터_검토/확인_1</div>
-      </a>
-      <a class="card" href="데이터_검토/확인_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="데이터_검토/확인_2/screen.png" alt="데이터_검토/확인_2" />
-        </div>
-        <div class="label">확인_2</div>
-        <div class="path">데이터_검토/확인_2</div>
-      </a>
-      <a class="card" href="데이터_검토/확인_3/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="데이터_검토/확인_3/screen.png" alt="데이터_검토/확인_3" />
-        </div>
-        <div class="label">확인_3</div>
-        <div class="path">데이터_검토/확인_3</div>
-      </a>
-      <a class="card" href="데이터_검토/확인_4/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="데이터_검토/확인_4/screen.png" alt="데이터_검토/확인_4" />
-        </div>
-        <div class="label">확인_4</div>
-        <div class="path">데이터_검토/확인_4</div>
-      </a>
-      <a class="card" href="데이터_검토/확인_5/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="데이터_검토/확인_5/screen.png" alt="데이터_검토/확인_5" />
-        </div>
-        <div class="label">확인_5</div>
-        <div class="path">데이터_검토/확인_5</div>
-      </a>
-      <a class="card" href="데이터_검토/확인_6/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="데이터_검토/확인_6/screen.png" alt="데이터_검토/확인_6" />
-        </div>
-        <div class="label">확인_6</div>
-        <div class="path">데이터_검토/확인_6</div>
-      </a>
-      <a class="card" href="동반_약물_ecrf/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="동반_약물_ecrf/screen.png" alt="동반_약물_ecrf" />
-        </div>
-        <div class="label">동반_약물_ecrf</div>
-        <div class="path">동반_약물_ecrf</div>
-      </a>
-      <a class="card" href="동반_질환_ecrf/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="동반_질환_ecrf/screen.png" alt="동반_질환_ecrf" />
-        </div>
-        <div class="label">동반_질환_ecrf</div>
-        <div class="path">동반_질환_ecrf</div>
-      </a>
-      <a class="card" href="로그인/회원가입_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="로그인/회원가입_1/screen.png" alt="로그인/회원가입_1" />
-        </div>
-        <div class="label">회원가입_1</div>
-        <div class="path">로그인/회원가입_1</div>
-      </a>
-      <a class="card" href="로그인/회원가입_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="로그인/회원가입_2/screen.png" alt="로그인/회원가입_2" />
-        </div>
-        <div class="label">회원가입_2</div>
-        <div class="path">로그인/회원가입_2</div>
-      </a>
-      <a class="card" href="로그인/회원가입_3/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="로그인/회원가입_3/screen.png" alt="로그인/회원가입_3" />
-        </div>
-        <div class="label">회원가입_3</div>
-        <div class="path">로그인/회원가입_3</div>
-      </a>
-      <a class="card" href="로그인/회원가입_4/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="로그인/회원가입_4/screen.png" alt="로그인/회원가입_4" />
-        </div>
-        <div class="label">회원가입_4</div>
-        <div class="path">로그인/회원가입_4</div>
-      </a>
-      <a class="card" href="병력_및_과거력_ecrf_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="병력_및_과거력_ecrf_1/screen.png" alt="병력_및_과거력_ecrf_1" />
-        </div>
-        <div class="label">병력_및_과거력_ecrf_1</div>
-        <div class="path">병력_및_과거력_ecrf_1</div>
-      </a>
-      <a class="card" href="병력_및_과거력_ecrf_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="병력_및_과거력_ecrf_2/screen.png" alt="병력_및_과거력_ecrf_2" />
-        </div>
-        <div class="label">병력_및_과거력_ecrf_2</div>
-        <div class="path">병력_및_과거력_ecrf_2</div>
-      </a>
-      <a class="card" href="부작용_기록_ecrf/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="부작용_기록_ecrf/screen.png" alt="부작용_기록_ecrf" />
-        </div>
-        <div class="label">부작용_기록_ecrf</div>
-        <div class="path">부작용_기록_ecrf</div>
-      </a>
-      <a class="card" href="사용자_관리/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="사용자_관리/screen.png" alt="사용자_관리" />
-        </div>
-        <div class="label">사용자_관리</div>
-        <div class="path">사용자_관리</div>
-      </a>
-      <a class="card" href="사용자_상세/편집/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="사용자_상세/편집/screen.png" alt="사용자_상세/편집" />
-        </div>
-        <div class="label">편집</div>
-        <div class="path">사용자_상세/편집</div>
-      </a>
-      <a class="card" href="새_sae_보고서_작성_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="새_sae_보고서_작성_1/screen.png" alt="새_sae_보고서_작성_1" />
-        </div>
-        <div class="label">새_sae_보고서_작성_1</div>
-        <div class="path">새_sae_보고서_작성_1</div>
-      </a>
-      <a class="card" href="새_sae_보고서_작성_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="새_sae_보고서_작성_2/screen.png" alt="새_sae_보고서_작성_2" />
-        </div>
-        <div class="label">새_sae_보고서_작성_2</div>
-        <div class="path">새_sae_보고서_작성_2</div>
-      </a>
-      <a class="card" href="새_sae_보고서_작성_3/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="새_sae_보고서_작성_3/screen.png" alt="새_sae_보고서_작성_3" />
-        </div>
-        <div class="label">새_sae_보고서_작성_3</div>
-        <div class="path">새_sae_보고서_작성_3</div>
-      </a>
-      <a class="card" href="새_sae_보고서_작성_4/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="새_sae_보고서_작성_4/screen.png" alt="새_sae_보고서_작성_4" />
-        </div>
-        <div class="label">새_sae_보고서_작성_4</div>
-        <div class="path">새_sae_보고서_작성_4</div>
-      </a>
-      <a class="card" href="설정_화면_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="설정_화면_1/screen.png" alt="설정_화면_1" />
-        </div>
-        <div class="label">설정_화면_1</div>
-        <div class="path">설정_화면_1</div>
-      </a>
-      <a class="card" href="설정_화면_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="설정_화면_2/screen.png" alt="설정_화면_2" />
-        </div>
-        <div class="label">설정_화면_2</div>
-        <div class="path">설정_화면_2</div>
-      </a>
-      <a class="card" href="설정_화면_3/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="설정_화면_3/screen.png" alt="설정_화면_3" />
-        </div>
-        <div class="label">설정_화면_3</div>
-        <div class="path">설정_화면_3</div>
-      </a>
-      <a class="card" href="설정_화면_4/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="설정_화면_4/screen.png" alt="설정_화면_4" />
-        </div>
-        <div class="label">설정_화면_4</div>
-        <div class="path">설정_화면_4</div>
-      </a>
-      <a class="card" href="설정_화면_5/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="설정_화면_5/screen.png" alt="설정_화면_5" />
-        </div>
-        <div class="label">설정_화면_5</div>
-        <div class="path">설정_화면_5</div>
-      </a>
-      <a class="card" href="스플래시_화면/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="스플래시_화면/screen.png" alt="스플래시_화면" />
-        </div>
-        <div class="label">스플래시_화면</div>
-        <div class="path">스플래시_화면</div>
-      </a>
-      <a class="card" href="시작_화면_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="시작_화면_1/screen.png" alt="시작_화면_1" />
-        </div>
-        <div class="label">시작_화면_1</div>
-        <div class="path">시작_화면_1</div>
-      </a>
-      <a class="card" href="시작_화면_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="시작_화면_2/screen.png" alt="시작_화면_2" />
-        </div>
-        <div class="label">시작_화면_2</div>
-        <div class="path">시작_화면_2</div>
-      </a>
-      <a class="card" href="시작_화면_3/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="시작_화면_3/screen.png" alt="시작_화면_3" />
-        </div>
-        <div class="label">시작_화면_3</div>
-        <div class="path">시작_화면_3</div>
-      </a>
-      <a class="card" href="시작_화면_4/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="시작_화면_4/screen.png" alt="시작_화면_4" />
-        </div>
-        <div class="label">시작_화면_4</div>
-        <div class="path">시작_화면_4</div>
-      </a>
-      <a class="card" href="신체_검사_ecrf_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="신체_검사_ecrf_1/screen.png" alt="신체_검사_ecrf_1" />
-        </div>
-        <div class="label">신체_검사_ecrf_1</div>
-        <div class="path">신체_검사_ecrf_1</div>
-      </a>
-      <a class="card" href="신체_검사_ecrf_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="신체_검사_ecrf_2/screen.png" alt="신체_검사_ecrf_2" />
-        </div>
-        <div class="label">신체_검사_ecrf_2</div>
-        <div class="path">신체_검사_ecrf_2</div>
-      </a>
-      <a class="card" href="앱_개요/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="앱_개요/screen.png" alt="앱_개요" />
-        </div>
-        <div class="label">앱_개요</div>
-        <div class="path">앱_개요</div>
-      </a>
-      <a class="card" href="앱_아이콘/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="앱_아이콘/screen.png" alt="앱_아이콘" />
-        </div>
-        <div class="label">앱_아이콘</div>
-        <div class="path">앱_아이콘</div>
-      </a>
-      <a class="card" href="약물_치료_ecrf_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="약물_치료_ecrf_1/screen.png" alt="약물_치료_ecrf_1" />
-        </div>
-        <div class="label">약물_치료_ecrf_1</div>
-        <div class="path">약물_치료_ecrf_1</div>
-      </a>
-      <a class="card" href="약물_치료_ecrf_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="약물_치료_ecrf_2/screen.png" alt="약물_치료_ecrf_2" />
-        </div>
-        <div class="label">약물_치료_ecrf_2</div>
-        <div class="path">약물_치료_ecrf_2</div>
-      </a>
-      <a class="card" href="연구_방문_기록_ecrf/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="연구_방문_기록_ecrf/screen.png" alt="연구_방문_기록_ecrf" />
-        </div>
-        <div class="label">연구_방문_기록_ecrf</div>
-        <div class="path">연구_방문_기록_ecrf</div>
-      </a>
-      <a class="card" href="케이스_보고서_선택_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="케이스_보고서_선택_1/screen.png" alt="케이스_보고서_선택_1" />
-        </div>
-        <div class="label">케이스_보고서_선택_1</div>
-        <div class="path">케이스_보고서_선택_1</div>
-      </a>
-      <a class="card" href="케이스_보고서_선택_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="케이스_보고서_선택_2/screen.png" alt="케이스_보고서_선택_2" />
-        </div>
-        <div class="label">케이스_보고서_선택_2</div>
-        <div class="path">케이스_보고서_선택_2</div>
-      </a>
-      <a class="card" href="케이스_보고서_선택_3/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="케이스_보고서_선택_3/screen.png" alt="케이스_보고서_선택_3" />
-        </div>
-        <div class="label">케이스_보고서_선택_3</div>
-        <div class="path">케이스_보고서_선택_3</div>
-      </a>
-      <a class="card" href="케이스_보고서_선택_4/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="케이스_보고서_선택_4/screen.png" alt="케이스_보고서_선택_4" />
-        </div>
-        <div class="label">케이스_보고서_선택_4</div>
-        <div class="path">케이스_보고서_선택_4</div>
-      </a>
-      <a class="card" href="케이스_보고서_선택_5/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="케이스_보고서_선택_5/screen.png" alt="케이스_보고서_선택_5" />
-        </div>
-        <div class="label">케이스_보고서_선택_5</div>
-        <div class="path">케이스_보고서_선택_5</div>
-      </a>
-      <a class="card" href="케이스_보고서_선택_6/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="케이스_보고서_선택_6/screen.png" alt="케이스_보고서_선택_6" />
-        </div>
-        <div class="label">케이스_보고서_선택_6</div>
-        <div class="path">케이스_보고서_선택_6</div>
-      </a>
-      <a class="card" href="쿼리_목록/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="쿼리_목록/screen.png" alt="쿼리_목록" />
-        </div>
-        <div class="label">쿼리_목록</div>
-        <div class="path">쿼리_목록</div>
-      </a>
-      <a class="card" href="쿼리_상세/해결/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="쿼리_상세/해결/screen.png" alt="쿼리_상세/해결" />
-        </div>
-        <div class="label">해결</div>
-        <div class="path">쿼리_상세/해결</div>
-      </a>
-      <a class="card" href="환자_등록_ecrf_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="환자_등록_ecrf_1/screen.png" alt="환자_등록_ecrf_1" />
-        </div>
-        <div class="label">환자_등록_ecrf_1</div>
-        <div class="path">환자_등록_ecrf_1</div>
-      </a>
-      <a class="card" href="환자_등록_ecrf_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="환자_등록_ecrf_2/screen.png" alt="환자_등록_ecrf_2" />
-        </div>
-        <div class="label">환자_등록_ecrf_2</div>
-        <div class="path">환자_등록_ecrf_2</div>
-      </a>
-      <a class="card" href="환자_목록_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="환자_목록_1/screen.png" alt="환자_목록_1" />
-        </div>
-        <div class="label">환자_목록_1</div>
-        <div class="path">환자_목록_1</div>
-      </a>
-      <a class="card" href="환자_목록_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="환자_목록_2/screen.png" alt="환자_목록_2" />
-        </div>
-        <div class="label">환자_목록_2</div>
-        <div class="path">환자_목록_2</div>
-      </a>
-      <a class="card" href="환자_목록_3/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="환자_목록_3/screen.png" alt="환자_목록_3" />
-        </div>
-        <div class="label">환자_목록_3</div>
-        <div class="path">환자_목록_3</div>
-      </a>
-      <a class="card" href="환자_목록_4/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="환자_목록_4/screen.png" alt="환자_목록_4" />
-        </div>
-        <div class="label">환자_목록_4</div>
-        <div class="path">환자_목록_4</div>
-      </a>
-      <a class="card" href="환자_목록_5/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="환자_목록_5/screen.png" alt="환자_목록_5" />
-        </div>
-        <div class="label">환자_목록_5</div>
-        <div class="path">환자_목록_5</div>
-      </a>
-      <a class="card" href="환자_목록_6/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="환자_목록_6/screen.png" alt="환자_목록_6" />
-        </div>
-        <div class="label">환자_목록_6</div>
-        <div class="path">환자_목록_6</div>
-      </a>
-      <a class="card" href="활력징후_ecrf_1/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="활력징후_ecrf_1/screen.png" alt="활력징후_ecrf_1" />
-        </div>
-        <div class="label">활력징후_ecrf_1</div>
-        <div class="path">활력징후_ecrf_1</div>
-      </a>
-      <a class="card" href="활력징후_ecrf_2/code.html" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img src="활력징후_ecrf_2/screen.png" alt="활력징후_ecrf_2" />
-        </div>
-        <div class="label">활력징후_ecrf_2</div>
-        <div class="path">활력징후_ecrf_2</div>
+    <div class="list">
+      <a class="item" href="ecrf_데이터_입력_1/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_데이터_입력_1</span>
+        <span class="path">ecrf_데이터_입력_1</span>
+      </a>
+      <a class="item" href="ecrf_데이터_입력_2/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_데이터_입력_2</span>
+        <span class="path">ecrf_데이터_입력_2</span>
+      </a>
+      <a class="item" href="ecrf_데이터_입력_3/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_데이터_입력_3</span>
+        <span class="path">ecrf_데이터_입력_3</span>
+      </a>
+      <a class="item" href="ecrf_데이터_입력_4/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_데이터_입력_4</span>
+        <span class="path">ecrf_데이터_입력_4</span>
+      </a>
+      <a class="item" href="ecrf_데이터_입력_5/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_데이터_입력_5</span>
+        <span class="path">ecrf_데이터_입력_5</span>
+      </a>
+      <a class="item" href="ecrf_데이터_입력_6/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_데이터_입력_6</span>
+        <span class="path">ecrf_데이터_입력_6</span>
+      </a>
+      <a class="item" href="ecrf_데이터_입력_7/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_데이터_입력_7</span>
+        <span class="path">ecrf_데이터_입력_7</span>
+      </a>
+      <a class="item" href="ecrf_데이터_입력_8/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_데이터_입력_8</span>
+        <span class="path">ecrf_데이터_입력_8</span>
+      </a>
+      <a class="item" href="ecrf_디자인_및_관리_1/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_디자인_및_관리_1</span>
+        <span class="path">ecrf_디자인_및_관리_1</span>
+      </a>
+      <a class="item" href="ecrf_디자인_및_관리_2/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_디자인_및_관리_2</span>
+        <span class="path">ecrf_디자인_및_관리_2</span>
+      </a>
+      <a class="item" href="ecrf_템플릿_미리보기/code.html" target="_blank" rel="noopener">
+        <span class="title">ecrf_템플릿_미리보기</span>
+        <span class="path">ecrf_템플릿_미리보기</span>
+      </a>
+      <a class="item" href="sae_보고서_목록_1/code.html" target="_blank" rel="noopener">
+        <span class="title">sae_보고서_목록_1</span>
+        <span class="path">sae_보고서_목록_1</span>
+      </a>
+      <a class="item" href="sae_보고서_목록_2/code.html" target="_blank" rel="noopener">
+        <span class="title">sae_보고서_목록_2</span>
+        <span class="path">sae_보고서_목록_2</span>
+      </a>
+      <a class="item" href="sae_보고서_목록_3/code.html" target="_blank" rel="noopener">
+        <span class="title">sae_보고서_목록_3</span>
+        <span class="path">sae_보고서_목록_3</span>
+      </a>
+      <a class="item" href="sae_상세_보기_1/code.html" target="_blank" rel="noopener">
+        <span class="title">sae_상세_보기_1</span>
+        <span class="path">sae_상세_보기_1</span>
+      </a>
+      <a class="item" href="sae_상세_보기_2/code.html" target="_blank" rel="noopener">
+        <span class="title">sae_상세_보기_2</span>
+        <span class="path">sae_상세_보기_2</span>
+      </a>
+      <a class="item" href="sae_상세_보기_3/code.html" target="_blank" rel="noopener">
+        <span class="title">sae_상세_보기_3</span>
+        <span class="path">sae_상세_보기_3</span>
+      </a>
+      <a class="item" href="데이터_검토/확인_1/code.html" target="_blank" rel="noopener">
+        <span class="title">확인_1</span>
+        <span class="path">데이터_검토/확인_1</span>
+      </a>
+      <a class="item" href="데이터_검토/확인_2/code.html" target="_blank" rel="noopener">
+        <span class="title">확인_2</span>
+        <span class="path">데이터_검토/확인_2</span>
+      </a>
+      <a class="item" href="데이터_검토/확인_3/code.html" target="_blank" rel="noopener">
+        <span class="title">확인_3</span>
+        <span class="path">데이터_검토/확인_3</span>
+      </a>
+      <a class="item" href="데이터_검토/확인_4/code.html" target="_blank" rel="noopener">
+        <span class="title">확인_4</span>
+        <span class="path">데이터_검토/확인_4</span>
+      </a>
+      <a class="item" href="데이터_검토/확인_5/code.html" target="_blank" rel="noopener">
+        <span class="title">확인_5</span>
+        <span class="path">데이터_검토/확인_5</span>
+      </a>
+      <a class="item" href="데이터_검토/확인_6/code.html" target="_blank" rel="noopener">
+        <span class="title">확인_6</span>
+        <span class="path">데이터_검토/확인_6</span>
+      </a>
+      <a class="item" href="동반_약물_ecrf/code.html" target="_blank" rel="noopener">
+        <span class="title">동반_약물_ecrf</span>
+        <span class="path">동반_약물_ecrf</span>
+      </a>
+      <a class="item" href="동반_질환_ecrf/code.html" target="_blank" rel="noopener">
+        <span class="title">동반_질환_ecrf</span>
+        <span class="path">동반_질환_ecrf</span>
+      </a>
+      <a class="item" href="로그인/회원가입_1/code.html" target="_blank" rel="noopener">
+        <span class="title">회원가입_1</span>
+        <span class="path">로그인/회원가입_1</span>
+      </a>
+      <a class="item" href="로그인/회원가입_2/code.html" target="_blank" rel="noopener">
+        <span class="title">회원가입_2</span>
+        <span class="path">로그인/회원가입_2</span>
+      </a>
+      <a class="item" href="로그인/회원가입_3/code.html" target="_blank" rel="noopener">
+        <span class="title">회원가입_3</span>
+        <span class="path">로그인/회원가입_3</span>
+      </a>
+      <a class="item" href="로그인/회원가입_4/code.html" target="_blank" rel="noopener">
+        <span class="title">회원가입_4</span>
+        <span class="path">로그인/회원가입_4</span>
+      </a>
+      <a class="item" href="병력_및_과거력_ecrf_1/code.html" target="_blank" rel="noopener">
+        <span class="title">병력_및_과거력_ecrf_1</span>
+        <span class="path">병력_및_과거력_ecrf_1</span>
+      </a>
+      <a class="item" href="병력_및_과거력_ecrf_2/code.html" target="_blank" rel="noopener">
+        <span class="title">병력_및_과거력_ecrf_2</span>
+        <span class="path">병력_및_과거력_ecrf_2</span>
+      </a>
+      <a class="item" href="부작용_기록_ecrf/code.html" target="_blank" rel="noopener">
+        <span class="title">부작용_기록_ecrf</span>
+        <span class="path">부작용_기록_ecrf</span>
+      </a>
+      <a class="item" href="사용자_관리/code.html" target="_blank" rel="noopener">
+        <span class="title">사용자_관리</span>
+        <span class="path">사용자_관리</span>
+      </a>
+      <a class="item" href="사용자_상세/편집/code.html" target="_blank" rel="noopener">
+        <span class="title">편집</span>
+        <span class="path">사용자_상세/편집</span>
+      </a>
+      <a class="item" href="새_sae_보고서_작성_1/code.html" target="_blank" rel="noopener">
+        <span class="title">새_sae_보고서_작성_1</span>
+        <span class="path">새_sae_보고서_작성_1</span>
+      </a>
+      <a class="item" href="새_sae_보고서_작성_2/code.html" target="_blank" rel="noopener">
+        <span class="title">새_sae_보고서_작성_2</span>
+        <span class="path">새_sae_보고서_작성_2</span>
+      </a>
+      <a class="item" href="새_sae_보고서_작성_3/code.html" target="_blank" rel="noopener">
+        <span class="title">새_sae_보고서_작성_3</span>
+        <span class="path">새_sae_보고서_작성_3</span>
+      </a>
+      <a class="item" href="새_sae_보고서_작성_4/code.html" target="_blank" rel="noopener">
+        <span class="title">새_sae_보고서_작성_4</span>
+        <span class="path">새_sae_보고서_작성_4</span>
+      </a>
+      <a class="item" href="설정_화면_1/code.html" target="_blank" rel="noopener">
+        <span class="title">설정_화면_1</span>
+        <span class="path">설정_화면_1</span>
+      </a>
+      <a class="item" href="설정_화면_2/code.html" target="_blank" rel="noopener">
+        <span class="title">설정_화면_2</span>
+        <span class="path">설정_화면_2</span>
+      </a>
+      <a class="item" href="설정_화면_3/code.html" target="_blank" rel="noopener">
+        <span class="title">설정_화면_3</span>
+        <span class="path">설정_화면_3</span>
+      </a>
+      <a class="item" href="설정_화면_4/code.html" target="_blank" rel="noopener">
+        <span class="title">설정_화면_4</span>
+        <span class="path">설정_화면_4</span>
+      </a>
+      <a class="item" href="설정_화면_5/code.html" target="_blank" rel="noopener">
+        <span class="title">설정_화면_5</span>
+        <span class="path">설정_화면_5</span>
+      </a>
+      <a class="item" href="스플래시_화면/code.html" target="_blank" rel="noopener">
+        <span class="title">스플래시_화면</span>
+        <span class="path">스플래시_화면</span>
+      </a>
+      <a class="item" href="시작_화면_1/code.html" target="_blank" rel="noopener">
+        <span class="title">시작_화면_1</span>
+        <span class="path">시작_화면_1</span>
+      </a>
+      <a class="item" href="시작_화면_2/code.html" target="_blank" rel="noopener">
+        <span class="title">시작_화면_2</span>
+        <span class="path">시작_화면_2</span>
+      </a>
+      <a class="item" href="시작_화면_3/code.html" target="_blank" rel="noopener">
+        <span class="title">시작_화면_3</span>
+        <span class="path">시작_화면_3</span>
+      </a>
+      <a class="item" href="시작_화면_4/code.html" target="_blank" rel="noopener">
+        <span class="title">시작_화면_4</span>
+        <span class="path">시작_화면_4</span>
+      </a>
+      <a class="item" href="신체_검사_ecrf_1/code.html" target="_blank" rel="noopener">
+        <span class="title">신체_검사_ecrf_1</span>
+        <span class="path">신체_검사_ecrf_1</span>
+      </a>
+      <a class="item" href="신체_검사_ecrf_2/code.html" target="_blank" rel="noopener">
+        <span class="title">신체_검사_ecrf_2</span>
+        <span class="path">신체_검사_ecrf_2</span>
+      </a>
+      <a class="item" href="앱_개요/code.html" target="_blank" rel="noopener">
+        <span class="title">앱_개요</span>
+        <span class="path">앱_개요</span>
+      </a>
+      <a class="item" href="앱_아이콘/code.html" target="_blank" rel="noopener">
+        <span class="title">앱_아이콘</span>
+        <span class="path">앱_아이콘</span>
+      </a>
+      <a class="item" href="약물_치료_ecrf_1/code.html" target="_blank" rel="noopener">
+        <span class="title">약물_치료_ecrf_1</span>
+        <span class="path">약물_치료_ecrf_1</span>
+      </a>
+      <a class="item" href="약물_치료_ecrf_2/code.html" target="_blank" rel="noopener">
+        <span class="title">약물_치료_ecrf_2</span>
+        <span class="path">약물_치료_ecrf_2</span>
+      </a>
+      <a class="item" href="연구_방문_기록_ecrf/code.html" target="_blank" rel="noopener">
+        <span class="title">연구_방문_기록_ecrf</span>
+        <span class="path">연구_방문_기록_ecrf</span>
+      </a>
+      <a class="item" href="케이스_보고서_선택_1/code.html" target="_blank" rel="noopener">
+        <span class="title">케이스_보고서_선택_1</span>
+        <span class="path">케이스_보고서_선택_1</span>
+      </a>
+      <a class="item" href="케이스_보고서_선택_2/code.html" target="_blank" rel="noopener">
+        <span class="title">케이스_보고서_선택_2</span>
+        <span class="path">케이스_보고서_선택_2</span>
+      </a>
+      <a class="item" href="케이스_보고서_선택_3/code.html" target="_blank" rel="noopener">
+        <span class="title">케이스_보고서_선택_3</span>
+        <span class="path">케이스_보고서_선택_3</span>
+      </a>
+      <a class="item" href="케이스_보고서_선택_4/code.html" target="_blank" rel="noopener">
+        <span class="title">케이스_보고서_선택_4</span>
+        <span class="path">케이스_보고서_선택_4</span>
+      </a>
+      <a class="item" href="케이스_보고서_선택_5/code.html" target="_blank" rel="noopener">
+        <span class="title">케이스_보고서_선택_5</span>
+        <span class="path">케이스_보고서_선택_5</span>
+      </a>
+      <a class="item" href="케이스_보고서_선택_6/code.html" target="_blank" rel="noopener">
+        <span class="title">케이스_보고서_선택_6</span>
+        <span class="path">케이스_보고서_선택_6</span>
+      </a>
+      <a class="item" href="쿼리_목록/code.html" target="_blank" rel="noopener">
+        <span class="title">쿼리_목록</span>
+        <span class="path">쿼리_목록</span>
+      </a>
+      <a class="item" href="쿼리_상세/해결/code.html" target="_blank" rel="noopener">
+        <span class="title">해결</span>
+        <span class="path">쿼리_상세/해결</span>
+      </a>
+      <a class="item" href="환자_등록_ecrf_1/code.html" target="_blank" rel="noopener">
+        <span class="title">환자_등록_ecrf_1</span>
+        <span class="path">환자_등록_ecrf_1</span>
+      </a>
+      <a class="item" href="환자_등록_ecrf_2/code.html" target="_blank" rel="noopener">
+        <span class="title">환자_등록_ecrf_2</span>
+        <span class="path">환자_등록_ecrf_2</span>
+      </a>
+      <a class="item" href="환자_목록_1/code.html" target="_blank" rel="noopener">
+        <span class="title">환자_목록_1</span>
+        <span class="path">환자_목록_1</span>
+      </a>
+      <a class="item" href="환자_목록_2/code.html" target="_blank" rel="noopener">
+        <span class="title">환자_목록_2</span>
+        <span class="path">환자_목록_2</span>
+      </a>
+      <a class="item" href="환자_목록_3/code.html" target="_blank" rel="noopener">
+        <span class="title">환자_목록_3</span>
+        <span class="path">환자_목록_3</span>
+      </a>
+      <a class="item" href="환자_목록_4/code.html" target="_blank" rel="noopener">
+        <span class="title">환자_목록_4</span>
+        <span class="path">환자_목록_4</span>
+      </a>
+      <a class="item" href="환자_목록_5/code.html" target="_blank" rel="noopener">
+        <span class="title">환자_목록_5</span>
+        <span class="path">환자_목록_5</span>
+      </a>
+      <a class="item" href="환자_목록_6/code.html" target="_blank" rel="noopener">
+        <span class="title">환자_목록_6</span>
+        <span class="path">환자_목록_6</span>
+      </a>
+      <a class="item" href="활력징후_ecrf_1/code.html" target="_blank" rel="noopener">
+        <span class="title">활력징후_ecrf_1</span>
+        <span class="path">활력징후_ecrf_1</span>
+      </a>
+      <a class="item" href="활력징후_ecrf_2/code.html" target="_blank" rel="noopener">
+        <span class="title">활력징후_ecrf_2</span>
+        <span class="path">활력징후_ecrf_2</span>
       </a>
     </div>
   </section>
