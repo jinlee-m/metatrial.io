@@ -1,5 +1,6 @@
 (function () {
   const STORAGE_KEY = "metatrial_proto_v1";
+  const THEME_KEY = "metatrial_theme";
 
   const seed = {
     _seeded: true,
@@ -154,6 +155,38 @@
     save(data);
   }
 
+  function applyTheme(theme) {
+    const root = document.documentElement;
+    const isDark = theme === "dark";
+    root.classList.toggle("dark", isDark);
+    root.classList.toggle("light", !isDark);
+    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+      btn.textContent = isDark ? "라이트 모드" : "다크 모드";
+      btn.classList.toggle("light", !isDark);
+      btn.setAttribute("aria-pressed", String(isDark));
+    });
+  }
+
+  function initTheme() {
+    const stored = localStorage.getItem(THEME_KEY);
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initial = stored || (prefersDark ? "dark" : "light");
+    applyTheme(initial);
+  }
+
+  function bindThemeToggle() {
+    const toggleButtons = document.querySelectorAll("[data-theme-toggle]");
+    if (!toggleButtons.length) return;
+    toggleButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.contains("dark");
+        const next = isDark ? "light" : "dark";
+        localStorage.setItem(THEME_KEY, next);
+        applyTheme(next);
+      });
+    });
+  }
+
   function renderPatientList(container) {
     const data = load();
     const total = data.patients.length;
@@ -213,6 +246,9 @@
       });
     });
   }
+
+  initTheme();
+  bindThemeToggle();
 
   function wireAddPatient() {
     const btn = document.querySelector("[data-proto-add-patient]");
