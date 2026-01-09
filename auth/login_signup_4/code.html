@@ -176,6 +176,22 @@
   body[data-screen-type="state"] .desktop-panel {
     display: none;
   }
+  body.in-frame .desktop-topbar,
+  body.in-frame .desktop-sidebar,
+  body.in-frame .desktop-panel {
+    display: none;
+  }
+  body.in-frame .desktop-body {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+  body.in-frame .desktop-shell {
+    background: transparent;
+  }
+  body.in-frame .app-frame {
+    max-width: 100%;
+    border-radius: 18px;
+  }
 }
 </style>
 </head>
@@ -295,4 +311,5 @@
     </aside>
   </div>
 </div>
+<script>if (window.self !== window.top) { document.body.classList.add("in-frame"); }</script>
 </body></html>
