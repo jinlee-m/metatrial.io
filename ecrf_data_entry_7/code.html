@@ -75,6 +75,22 @@ details[open] .content {
     }
   </style>
   <style data-desktop-shell>
+html.in-frame .desktop-topbar,
+html.in-frame .desktop-sidebar,
+html.in-frame .desktop-panel {
+  display: none !important;
+}
+html.in-frame .desktop-body {
+  grid-template-columns: 1fr;
+  padding: 0;
+}
+html.in-frame .desktop-shell {
+  background: transparent;
+}
+html.in-frame .app-frame {
+  max-width: 100%;
+  border-radius: 18px;
+}
 @media (min-width: 1100px) {
   body {
     background: #0b1117 !important;
@@ -209,24 +225,9 @@ details[open] .content {
   body[data-screen-type="state"] .desktop-panel {
     display: none;
   }
-  body.in-frame .desktop-topbar,
-  body.in-frame .desktop-sidebar,
-  body.in-frame .desktop-panel {
-    display: none;
-  }
-  body.in-frame .desktop-body {
-    grid-template-columns: 1fr;
-    padding: 0;
-  }
-  body.in-frame .desktop-shell {
-    background: transparent;
-  }
-  body.in-frame .app-frame {
-    max-width: 100%;
-    border-radius: 18px;
-  }
 }
 </style>
+<script>if (window.self !== window.top) { document.documentElement.classList.add("in-frame"); }</script>
 </head>
 <body data-proto-ecrf-step="7" class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary/30 flex flex-col min-h-[100dvh] relative overflow-x-hidden" data-screen-type="form" data-screen-label="ecrf_data_entry_7">
 <div class="desktop-shell">
@@ -532,5 +533,6 @@ Date of initial confirmation
     </aside>
   </div>
 </div>
-<script>if (window.self !== window.top) { document.body.classList.add("in-frame"); }</script>
+
+
 </body></html>
